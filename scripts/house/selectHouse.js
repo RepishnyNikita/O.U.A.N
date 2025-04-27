@@ -10,9 +10,9 @@ import showEventNotification from "../events/showEventnotification.js";
 import { ICON } from "../assets.js";
 
 const houseIconsSrc = [
-  {house: '/icon/homes/home-1.png'},
-  {house: '/icon/homes/home-2.png'},
-  {house: '/icon/homes/home-3.png'}
+  {house: 'icon/homes/home-1.png'},
+  {house: 'icon/homes/home-2.png'},
+  {house: 'icon/homes/home-3.png'}
 ]
 
 export default function selectHouse() {
