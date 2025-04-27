@@ -1,0 +1,14 @@
+@use '../helpers/' as *;
+
+.items{
+    background-color: transparent;
+    border: 0;
+    width: fluid(60,40);
+
+  &-target{
+    padding: rem(5);
+    background: linear-gradient(180deg, #ae509d 0%, #352632 100%);
+    border: rem(2) solid #F9F4DA;
+    border-radius: rem(5);
+  }
+}

@@ -1,0 +1,14 @@
+@use '../helpers/' as *;
+
+.timer{
+    display: flex;
+    align-items: center;
+    column-gap: rem(10);
+    font-weight: 600;
+    font-size: fluid(22,16);
+    color: #D94929;
+
+    & img{
+        width: fluid(30,20);
+    }
+}

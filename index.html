@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/main.css">
+    <title>Грабежник</title>
+    <script src="./scripts/main.js" type="module" defer></script>
+</head>
+<body>
+    <main class="game-field" data-js-game-field>
+        <div class="game-header">
+            <h1>Грабежник</h1>
+            <button class="game-header__btn" data-js-button-burger>
+                <img src="/icon/burgerButton.svg" alt="">
+            </button>
+            <div class="game-header-dialog" data-js-header-dialog>
+                <button class="game-saved-button" data-js-saved-button>Сохранить игру</button>
+                <button class="game-saved-button" data-js-load-button>Загрузить игру</button>
+                <button class="game-saved-button" data-js-statistics-modal-open>Статистика</button>
+            </div>
+        </div>
+        <!----------------------->
+        <div class="debt-container">
+            <div class="debt-container__content">
+                <p class="debt-container__content-desc">
+                    Задолжность Фродо Беккенсу
+                    <img src="/icon/debt.png" alt="policeman" width="30" height="30" loading="lazy">
+                </p>
+                <div class="debt-container__row">
+                    <div class="debt-container__value">
+                        <span class="debt-container__value-total" data-js-debt-left></span>
+                        <span data-js-debt-total>/</span>
+                    </div>
+                    <button class="debt-container__btn-pay" data-js-debt-pay-btn></button>
+                </div>
+            </div>
+
+            <div class="debt-container__progress-bar" data-js-progress></div>
+
+            <div class="debt-container__content">
+                <p class="debt-container__content-desc">
+                    Долг перед полицией
+                    <img src="/icon/policeman.png" alt="policeman" width="30" height="30" loading="lazy">
+                </p>
+                <div class="debt-container__row">
+                    <div class="debt-container__value">
+                        <span class="debt-container__value-police" data-js-debt-amount></span>
+                        <span data-js-debt-total-police></span>
+                    </div>
+                    <button class="debt-container__btn-pay" data-js-debt-police-pay-btn></button>
+                </div>
+            </div>
+        </div>
+        <!----------------------->
+        <div class="energy-bar"> 
+            <div class="energy-bar__inner">
+                <div class="energy-bar__regen-count" data-js-energy-count></div>
+                <span class="energy-bar__regen-timer" data-js-energy-timer></span>
+            </div>
+            <div class="energy-bar__fill" data-js-energy-fill></div>
+        </div>
+        <!-- ----------------- -->
+        <div class="shops-container">
+            <div class="money" data-js-money></div>
+            <div class="shops-container__buttons" data-js-shops-buttons>
+                <button class="shops-container__button" data-js-black-market-btn>
+                    Купить
+                    <img src="/icon/pay.png" alt="" width="25" height="25" loading="lazy">
+                </button>
+                <button class="shops-container__button" data-js-sell-market-btn>
+                    Продать
+                    <img src="/icon/sell.png" alt="" width="25" height="25" loading="lazy">
+                </button>
+            </div>
+        </div>
+        <!-- ----------------- -->
+
+        <div class="game-field__info" data-js-game-field-info>
+            <div class="target-item" data-js-target-item></div>
+            <div class="event-notification" data-js-event-notification></div>
+            <div class="timer">
+                <img src="./icon/man.png" alt="man" width="25" height="25" loading="lazy">
+                <span data-js-timer></span>
+            </div>
+        </div>
+        <!-- ----------------- -->
+        <div class="actions-container" data-js-actions-container>
+        </div>
+        <!-- ----------------- -->
+        <div class="inventory" data-js-inventory></div>
+        <!-- ----------------- -->
+        <div class="log">
+            <div class="log__content" data-js-log></div>
+            <button class="log__btn-clear" data-js-button-clear-log>
+                <img src="/icon/uiIcon/clear.png" alt="button clear log" width="30" height="30">
+            </button>
+        </div>
+        <!-- ----------------- -->
+        
+
+        <!-- покупка -->
+        <div class="black-market" data-js-black-market>
+            <button class="black-market-close-btn" data-js-black-market-close-btn>Х</button>
+            <h3 class="h4">Черный рынок</h3>
+            <div>
+                <span>Наличные:$</span>
+                <span data-js-black-market-money></span>
+            </div>
+            <div class="black-market-inner">
+                <div class="black-market-header">
+                    <span>Товар</span>
+                    <span>Цена</span>
+                    <span>Действие</span>
+                </div>
+                <ul class="black-market-list" data-js-black-market-list></ul>
+            </div>
+            <div class="black-market-timer">Изменение цен через:<span data-js-black-market-timer></span></div>
+        </div>
+
+        <!-- продажа -->
+        <div class="black-market" data-js-sell-market>
+            <button class="black-market-close-btn" data-js-sell-market-close-btn>Х</button>
+            <h3 class="h4">Сбыт краденного</h3>
+            <div>
+                <span>Наличные:$</span>
+                <span data-js-sell-market-money></span>
+            </div>
+            <div class="black-market-inner">
+                <div class="black-market-header">
+                    <span>Товар</span>
+                    <span>Цена</span>
+                    <span>Действие</span>
+                </div>
+                <ul class="black-market-list" data-js-sell-market-list></ul>
+            </div>
+            <div class="black-market-timer">Изменение цен через:<span data-js-sell-market-timer></span></div>
+        </div>
+        <!--статистика-->
+        <dialog class="statistics-modal" data-js-statistics-modal>
+            <div class="statistics-modal-content" data-js-statistics-modal-content></div>
+            <button class="statistics-modal-btn-restart" data-js-restart-game>Начать заного</button>
+            <button class="statistics-modal-btn-close" data-js-statistics-modal-close>Закрыть окно</button>
+        </dialog>
+
+
+    </main>
+</body>
+</html>

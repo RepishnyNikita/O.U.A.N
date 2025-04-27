@@ -1,0 +1,77 @@
+@use '../helpers/' as *;
+
+.debt-container{
+    padding: rem(10);
+    display: grid;
+    row-gap: rem(5);
+    width: 100%;
+    border-radius: rem(10);
+    background-color: #0000008f;
+    border: rem(1) solid #ffffff65;
+    color: #F9F4DA;
+    
+    &__content{
+        display: grid;
+        row-gap: rem(2);
+
+        &-desc{
+            display: flex;
+            align-items: center;
+            column-gap: rem(5);
+            font-weight: 600;
+
+            & img{
+                width: fluid(30,20);
+            }
+        }
+    }
+    &__row{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        column-gap: rem(10);
+    }
+
+    &__value{
+        display: flex;
+        column-gap: rem(5);
+        flex-shrink: 0;
+        font-size: fluid(20,14);
+        font-weight: 500;
+        &-police{
+            color: #D94929;
+        }
+        &-total{
+            color: #FFD77F
+        }
+        & i{
+            color: #3FD83F;
+            font-weight: 600;
+        }
+    }
+
+    &__progress-bar{
+        height: rem(6);
+        background-color: #D94929;
+        border-radius: rem(3);
+    }
+
+    &__btn-pay{
+        padding: rem(5) rem(10);
+        border: rem(1) solid #7A7974;
+        background-color: #262626;
+        max-width:fluid(150,120);
+        width: 100%;
+        color: inherit;
+        border-radius: rem(5);
+        font-weight: 700;
+
+        & span:last-child{
+            color: #9CAE6A;
+        }
+
+        @include hover{
+            background-color: rgb(96, 100, 96);
+        }
+    }
+}

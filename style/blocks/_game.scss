@@ -1,0 +1,97 @@
+@use '../helpers/' as *;
+
+.game{
+    &-field{
+        padding: rem(5) rem(10);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        row-gap: rem(10);
+        align-items: center;
+        max-width: rem(700);
+        width: 100%;
+        border-radius: rem(5);
+        border: rem(2) solid #ffffff6b;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: relative;
+
+        &__info{
+            padding: 0 rem(10);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            column-gap: rem(5);
+            border: rem(1) solid #a5a4a4;
+            opacity: 0;
+            pointer-events: none;
+            // transform: translateY(-100%);
+            transform: rotateX(90deg);
+            transition: .5s ease-in-out;
+            height: 0;
+
+            &.is-visuality{
+                height: rem(50);
+                opacity: 1;
+                pointer-events: all;
+                transform: rotateX(0);
+            // transform: translateY(0);
+            }
+        }
+
+
+    }
+
+    &-header{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+
+        &-dialog{
+            padding: rem(5) rem(10);
+            position: absolute;
+            top: rem(40);
+            right: 0;
+            display: none;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            height: rem(200);
+            row-gap: rem(10);
+            background-color: #555661;
+            border-radius: rem(3);
+            z-index: 99;
+
+            &.is-open{
+                display:flex;
+            }
+        }
+        &__btn{
+            background-color: transparent;
+            border: 0;
+        }
+    }
+
+    &-saved{
+        display: flex;
+        align-items: center;
+        column-gap: rem(5);
+
+        &-button{
+            width: 100%;
+            padding: rem(3) rem(7);
+            color: inherit;
+            border: 0;
+            border-radius: rem(5);
+            background-color: #555661;
+            transition: 0.2s ;
+            border: rem(1) solid #fff;
+
+            @include hover{
+                background-color: #1f5318;
+            }
+        }
+    }
+}

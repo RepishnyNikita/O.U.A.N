@@ -1,0 +1,15 @@
+@use '../helpers/' as *;
+
+.money{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    column-gap: fluid(10,3);
+    font-size: fluid(26,16);
+    color: rgb(148, 255, 148);
+    user-select: none;
+
+    img{
+        width: fluid(40,20);
+    }
+}

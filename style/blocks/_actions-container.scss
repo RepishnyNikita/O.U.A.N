@@ -1,0 +1,103 @@
+@use '../helpers/' as *;
+
+.actions-container{
+    padding: rem(10) fluid(40,30);
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: rem(10) rem(5);
+    min-height: fluid(150,50);
+    border: rem(1) solid #fff;
+    border-radius: rem(10);
+    position: relative;
+
+    &-grid{
+        display: grid;
+        align-content: center;
+        gap: rem(10);
+    }
+
+    &-grid-3-cols{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        align-content: center;
+        gap: rem(10);
+    }
+    
+    &-cancellation{
+        padding: 0;
+        position: absolute;
+        right: fluid(6,2);
+        top: fluid(6,2);
+        background-color: transparent;
+        border: 0;
+
+        img{
+            @include square(fluid(25,20));
+        }
+
+        @include hover{
+            background-color: #f1ffa3;
+            border-radius: rem(6);
+        }
+    }
+    &-img{
+        display: flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        column-gap: rem(10);
+
+        img{
+            @include square(rem(20));
+        }
+    }
+
+    &-btn-img{
+        display: flex;
+        flex-direction: column-reverse;
+        background-color: transparent;
+        border: 0;
+        padding: 0;
+        color: #fff;
+        font-size: rem(20);
+
+        @include hover{
+            scale: 1.1;
+        }
+
+        img{
+            @include square(rem(65));
+        }
+
+        &.disable{
+            position: relative;
+            opacity: 0.4;
+
+            &::after{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                content: 'закрыто';
+                translate:-50%  -50%;
+                transform: rotate(35deg);
+                
+            }
+        }
+    }
+}
+// .visited-room{
+//     position: relative;
+//     opacity: 0.4;
+
+//     &::after{
+//         position: absolute;
+//         top: 50%;
+//         left: 50%;
+//         content: 'посищено';
+//         translate:-50%  -50%;
+//         transform: rotate(35deg);
+                
+//     }
+// }

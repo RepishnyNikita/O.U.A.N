@@ -1,0 +1,16 @@
+@use '../helpers/' as *;
+
+.event-notification{
+    display: flex;
+    align-items: center;
+    column-gap: rem(4);
+
+    &__timer{
+        color: #D94929;
+        font-weight: 600;
+    }
+    
+    & img {
+        width: fluid(50,30);
+    }
+}

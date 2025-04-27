@@ -1,0 +1,82 @@
+@use '../helpers/' as *;
+
+.button-actions{
+    padding: rem(5) rem(20);
+    display: flex;
+    align-items: center;
+    column-gap: rem(5);
+    font-size: fluid(18,12);
+    width: max-content;
+    color: inherit;
+    background-color: #444;
+    border-radius: rem(5);
+    font-weight: 600;
+    border:0;
+
+    @include hover{
+        background-color: #696464;
+    }
+
+    &--safe{
+        padding: rem(5);
+        position: absolute;
+        bottom: rem(5);
+        left: rem(5);
+        & img{
+            width: fluid(30,20);
+        }
+        &:nth-child(2){
+            transform: translateX(fluid(230,160));
+        }
+    }
+
+    &.log{
+        max-width: unset;
+    }
+    &.helper{
+        padding: rem(5);
+        font-size: rem(14);
+        position: absolute;
+        right: rem(5);
+        top: rem(5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+        @include square(rem(30))
+    }
+
+    &-flex{
+        padding: rem(3) rem(7);
+        display: flex;
+        justify-content: space-between;
+        column-gap: rem(10);
+        align-items: center;
+        max-width: rem(320);
+        width: 100%;
+        background-color: rgba(75, 69, 69, 0.552);
+        border: rem(2) solid #F9F4DA;
+        color: #60bf3a;
+        font-weight: 600;
+        border-radius: rem(5);
+        img{
+            width: rem(30);
+        }
+
+        @include hover{
+            color: rgb(224, 224, 39);
+        }
+        &.disabled{
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        &.is-visited{
+            opacity: 0.7;
+            color: inherit;
+        }
+        &.reverse{
+            width: unset;
+        }
+    }
+}

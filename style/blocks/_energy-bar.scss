@@ -1,0 +1,50 @@
+@use '../helpers/' as *;
+
+.energy-bar{
+    width: 100%;
+    height: fluid(40,22);
+    // background-color: var(--color-dark-15);
+    border: rem(2) solid #F9F4DA;
+    border-radius: rem(10);
+    position: relative;
+
+
+    &__inner{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        column-gap: rem(30);
+        font-size: fluid(18,12);
+        font-weight: 600;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+    &__regen-timer{
+        color:#D94929;
+        font-weight: 600;
+    }
+
+    &__regen-count{
+        color: #F9F4DA;
+
+        &__value{
+            color: #E2D113;
+        }
+    }
+    
+    &__fill{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: fluid(30,16);
+        background-color: #51A04D;
+        border-radius: rem(15);
+        font-weight: 600;
+        z-index: 1;
+        transition: 0.5s ease-in-out;
+    }
+    
+}

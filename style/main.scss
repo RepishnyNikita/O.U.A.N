@@ -1,0 +1,23 @@
+@use 'normalize';
+@use 'variables';
+@use 'utils';
+@use 'global';
+
+@use './blocks/game';
+@use './blocks/debt-container';
+@use './blocks/main-mechanics';
+@use './blocks/energy-bar';
+@use './blocks/timer';
+@use './blocks/shops-container';
+@use './blocks/money';
+@use './blocks/actions-container';
+@use './blocks/button-actions';
+@use './blocks/inventory';
+@use './blocks/log';
+@use './blocks/items';
+@use './blocks/black-market';
+@use './blocks/event-notification';
+@use './blocks/target-item';
+@use './blocks/statistics-popup';
+
+

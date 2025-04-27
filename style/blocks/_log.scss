@@ -1,0 +1,71 @@
+@use '../helpers/' as *;
+
+.log{
+    width: 100%;
+    height: rem(200);
+    background-color: var(--color-dark-15);
+    border-radius: rem(10);
+    border: rem(2) solid #575757;
+    position: relative;
+    height: rem(150);
+
+    &__btn-clear{
+        border: 0;
+        background-color: transparent;
+        position: absolute;
+        bottom: rem(5);
+        right: rem(18);
+        transition: .3s ease-in-out;
+        
+
+        & img{
+            width: fluid(30,20);
+        }
+
+        @include hover{
+            background-color: #FFD77F;
+            border-radius: rem(4);
+        }
+    }
+
+    &__content{
+        padding: rem(5) rem(10);
+        overflow-y: auto;
+        font-size: fluid(16,12);
+        height: 100%;
+    }
+
+    &__text{
+        display: flex;
+        align-items: center;
+        column-gap: rem(10);
+        color: #d6d3d3;
+
+        &--gray-text{
+            color: rgb(121, 118, 118);
+        }
+
+        &--red-text{
+            color: rgb(255, 47, 47);
+        }
+        &--violet-text{
+            color: #AE509D;
+        }
+    
+        &--yellow-text{
+            color: #FFD77F;
+        }
+
+        &--yellow-2-text{
+            color: rgb(255 249 0);
+        }
+
+        &--green-text{
+            color: #a8ff7f;
+        }
+    
+        &--orange-text{
+            color: #fd6208;
+        }
+    }
+}

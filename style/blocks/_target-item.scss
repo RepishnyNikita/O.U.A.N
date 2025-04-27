@@ -1,0 +1,19 @@
+@use '../helpers/' as *;
+
+.target-item{
+    display: flex;
+    max-width: fluid(100,70);
+    width: 100%;
+    align-items: center;
+    column-gap: fluid(15,5);
+    color: #F9F4DA;
+    font-weight: 600;
+    
+    img{
+        width: fluid(30,25);
+    }
+
+    &__found{
+        color: rgb(45, 252, 45);
+    }
+}
