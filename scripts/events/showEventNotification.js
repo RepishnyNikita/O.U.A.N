@@ -1,6 +1,6 @@
 export default function showEventNotification(
   startEvents = false,
-  iconEvents = "/icon/noEvents.png",
+  iconEvents = "icon/noEvents.png",
   duration = false
 ) {
   const container = document.querySelector("[data-js-event-notification]");
