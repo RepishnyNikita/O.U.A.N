@@ -724,8 +724,8 @@ button[aria-label]::before {
   }
 }
 .actions-container-btn-img img {
-  width: 4.0625rem;
-  height: 4.0625rem;
+  width: clamp(2.5rem, 2.1017156863rem + 1.6339869281vw, 4.0625rem);
+  height: clamp(2.5rem, 2.1017156863rem + 1.6339869281vw, 4.0625rem);
 }
 .actions-container-btn-img.disable {
   position: relative;

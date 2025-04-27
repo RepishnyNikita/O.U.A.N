@@ -6,7 +6,7 @@ export const game = {
         energyRegenTimer: 60,
     },
     economy:{
-        money: 80000,
+        money: 0,
         totalMoney: 0,
         debtPaid: 0,
         baseFine:1000,
@@ -32,8 +32,8 @@ export const game = {
 
 
     timeLeft: 480,
-    inventory: ['энергетик','отмычка'],
-    inventorySlots: 10,
+    inventory: [],
+    inventorySlots: 6,
 
     currentHouse: null,
     checkedDoors: [],

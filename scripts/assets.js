@@ -20,8 +20,8 @@ export const ICON ={
 }
 
 export const EVENTS_ICON = {
-    PHLASHER:'/icon/flasher.png',
-    MORE_MONEY:'/icon/icons-of-valuables/more-money.png',
-    OPEN_DOOR:'/icon/openDoor.png',
-    PARTY:'/icon/party.png'
+    PHLASHER:'icon/flasher.png',
+    MORE_MONEY:'icon/icons-of-valuables/more-money.png',
+    OPEN_DOOR:'icon/openDoor.png',
+    PARTY:'icon/party.png'
 }

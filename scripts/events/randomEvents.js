@@ -32,7 +32,7 @@ export const randomEvents = {
   MONEY_SPAWN: {
     description: "В одной из комнат куча денег!",
     icon: EVENTS_ICON.MORE_MONEY,
-    chance: 0.9,
+    chance: 0.1,
     duration: 1,
     apply: function () {
       const rooms = Object.keys(game.currentHouse.rooms);
@@ -49,7 +49,7 @@ export const randomEvents = {
   POLICE_ALERT: {
     description: "Кто-то вызвал полицию! У вас 10 секунд чтобы сбежать!",
     duration: 10,
-    chance:  0.2,
+    chance:  0.1,
     icon: EVENTS_ICON.PHLASHER,
     apply: function () {
       addToLog(
@@ -68,7 +68,7 @@ export const randomEvents = {
     },
   },
   HOUSE_PARTY: {
-    chance: 0.9,
+    chance: 0.1,
     duration: 20,
     icon: EVENTS_ICON.PARTY,
     apply: function () {
