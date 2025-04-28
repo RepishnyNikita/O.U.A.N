@@ -16,7 +16,7 @@ export default function endRobbery() {
     // containerElements.actionsContainer.classList.remove('actions-container-grid-3-cols')
 
     game.currentHouse= null
-    
+    game.startRobbery = false
     game.events.activeEvent = null;
     game.events.policeCalled = false;
     game.events.partyHouse = false;
