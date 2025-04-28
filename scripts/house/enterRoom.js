@@ -1,9 +1,7 @@
-import { updateEnergyUI } from "../energyRegen.js";
-import enterHouse from "./enterHouse.js";
 import handleSafe from "./handleSafe.js";
 import { items } from "../items.js";
 import takeItem from "../takeItem.js";
-import updateUI from "../updateUI.js";
+import updateUI from "../updatesUI.js";
 import { addToLog, clearActions, addAction } from "../utils.js";
 import { game } from "../variables-game.js";
 import { containerElements } from "../dom-elements.js";
@@ -53,15 +51,16 @@ export default function enterRoom(roomName) {
   }
 
   const roomItems = [...room.items];
-
-  roomItems.forEach((item) => {
-    if (!items[item]) {
-      addToLog(`Ошибка: предмет ${item} не найден в базе`, "red");
-      return;
-    }
-    addAction(null, () => takeItem(item),'items', items[item].icon);
-  });
-
+  if(roomItems){
+    roomItems.forEach((item) => {
+      if (!items[item]) {
+        addToLog(`Ошибка: предмет ${item} не найден в базе`, "red");
+        return;
+      }
+      addAction(null, () => takeItem(item),'items', items[item].icon);
+    });
+  }
+  
   addAction(
     null,()=>
     attemptExit(roomName),

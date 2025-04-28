@@ -3,12 +3,11 @@ import updateInventory from "./updateInventory.js";
 import { addToLog, addAction, clearActions } from "./utils.js";
 import { game } from "./variables-game.js";
 import triggerEvent from "./events/triggerEvent.js";
-import { updateEnergyUI } from "./energyRegen.js";
 import { randomEvents } from "./events/randomEvents.js";
 import handleSafe from "./house/handleSafe.js";
-import updateShowTargetItem from "./house/updateShowTargetItem.js";
 import { ICON } from "./assets.js";
 import { attemptExit } from "./house/attemptEscape.js";
+import { updateShowTargetItem, updateEnergyUI} from "./updatesUI.js";
 
 
 // Взять предмет

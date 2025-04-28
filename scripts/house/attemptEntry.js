@@ -1,5 +1,5 @@
 import updateInventory from "../updateInventory.js";
-import updateUI from "../updateUI.js";
+import updateUI from "../updatesUI.js";
 import { addToLog } from "../utils.js";
 import { game } from "../variables-game.js";
 import showEntryPoints from "./showEntryPoints.js";

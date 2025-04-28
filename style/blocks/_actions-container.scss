@@ -8,10 +8,11 @@
     align-items: center;
     justify-content: center;
     gap: rem(10) rem(5);
-    min-height: fluid(150,50);
     border: rem(1) solid #fff;
     border-radius: rem(10);
     position: relative;
+    transition: height 5s liner;
+
 
     &-grid{
         display: grid;
@@ -35,7 +36,7 @@
         border: 0;
 
         img{
-            @include square(fluid(25,20));
+            @include square(fluid(30,25));
         }
 
         @include hover{
@@ -87,17 +88,3 @@
         }
     }
 }
-// .visited-room{
-//     position: relative;
-//     opacity: 0.4;
-
-//     &::after{
-//         position: absolute;
-//         top: 50%;
-//         left: 50%;
-//         content: 'посищено';
-//         translate:-50%  -50%;
-//         transform: rotate(35deg);
-                
-//     }
-// }

@@ -1,14 +1,19 @@
+import updateUI from "../updatesUI.js";
 import { game } from "../variables-game.js";
 import { addToLog } from "../utils.js";
 import showMainMenu from "../showMainMenu.js";
-import updateUI from "../updateUI.js";
 import initMarketModifiers from "../market/blackMarket/initMarketModifiers.js";
 import initModifiers from "../market/initModifiers.js";
 import startMarketTimer from "../market/blackMarket/startMarketTimer.js";
 import { ICON } from "../assets.js";
 
+
 // Загрузка игры
 export default function loadGame() {
+  if(game.startRobbery){
+    addToLog('Нельзя загрузить игру во время ограбления!', 'red', ICON.X_MARK)
+    return
+  }
   const saved = localStorage.getItem("robberSave");
   if (saved) {
     try {
@@ -45,12 +50,13 @@ export default function loadGame() {
       }
 
       addToLog("Игра загружена!", "green", ICON.CHECK_MARK);
-      updateUI();
+      updateUI(); 
     } catch (e) {
       addToLog("Ошибка загрузки сохранения", "red", ICON.X_MARK);
     }
   } else {
     addToLog("Нет сохранённой игры!", "red", ICON.X_MARK);
   }
+
   showMainMenu();
 }

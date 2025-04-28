@@ -1,10 +1,10 @@
 import showMainMenu from "./showMainMenu.js";
 import { startEnergyRegen } from "./energyRegen.js";
 import initMarketModifiers from "./market/blackMarket/initMarketModifiers.js";
-import updateUI from "./updateUI.js";
+import updateUI from "./updatesUI.js";
 import initDebtPaymentHandlers from "./payDebt.js";
 import sellingLoot from "./market/sellingLoot.js";
-import { addToLog, clearLog } from "./utils.js";
+import { addToLog, clearLog, showAndHideShop } from "./utils.js";
 import initModifiers from "./market/initModifiers.js";
 import loadGame from "./saveAndLoadGame/loadGame.js";
 import saveGame from "./saveAndLoadGame/saveGame.js";
@@ -13,7 +13,9 @@ export default function initGame() {
   updateUI();
   startEnergyRegen();
   showMainMenu();
+  showAndHideShop()
   initDebtPaymentHandlers()
+
 
   document.querySelector('[data-js-button-burger]').addEventListener('click',()=>{
     document.querySelector('[data-js-header-dialog]').classList.toggle('is-open')

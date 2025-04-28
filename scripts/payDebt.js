@@ -1,10 +1,11 @@
 import endGame from "./endGame.js";
-import { updatePoliceDebtUI } from "./handleArrest.js";
-import { addToLog, updateMoneyUI } from "./utils.js";
+import { addToLog} from "./utils.js";
 import { game } from "./variables-game.js";
 import { EVENTS_ICON, ICON } from "./assets.js";
-import updateDebtUI from "./updateDebtUI.js";
 import { buttonElements } from "./dom-elements.js";
+import { updateDebtUI ,updatePoliceDebtUI, updateMoneyUI } from "./updatesUI.js";
+
+
 
 
 function payDebt() {
@@ -14,6 +15,7 @@ function payDebt() {
 
     addToLog("Вы внесли $1,000 в счет долга", "green", ICON.TOTAL_MONEY);
     updateDebtUI()
+    updateMoneyUI()
     if (game.economy.debtPaid >= game.economy.totalDebt) {
       endGame("victory");
     }

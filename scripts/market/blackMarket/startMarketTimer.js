@@ -1,12 +1,10 @@
-import { updateMarketTimerUI } from "../../utils.js";
 import { game } from "../../variables-game.js";
-import updateSellMarketPrices from "../updateSellMarketPrices.js";
-import updateMarketPrices from "./updateMarketPrices.js";
+import {updateMarketPrices, updateSellMarketPrices, updateMarketTimerUI} from '../../updatesUI.js'
 
-
-// Таймер для изменения цен на рынках
 export default function startMarketTimer() {
   clearInterval(game.marketInterval);
+  updateMarketPrices()
+  updateSellMarketPrices()
   game.marketTimer = 120;
   updateMarketTimerUI();
 

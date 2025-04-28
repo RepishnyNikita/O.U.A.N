@@ -1,9 +1,8 @@
 import { ICON } from "./assets.js";
-import { updateEnergyUI } from "./energyRegen.js";
 import { items } from "./items.js";
+import { updateEnergyUI } from "./updatesUI.js";
 import { addAction, addToLog } from "./utils.js";
 import { game } from "./variables-game.js";
-
 
 export default function updateInventory() {
     const inventoryElement = document.querySelector("[data-js-inventory]");

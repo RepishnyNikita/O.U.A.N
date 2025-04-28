@@ -1,7 +1,7 @@
 @use '../helpers/' as *;
 
 .debt-container{
-    padding: rem(10);
+    padding-inline:rem(10);
     display: grid;
     row-gap: rem(5);
     width: 100%;
@@ -9,6 +9,38 @@
     background-color: #0000008f;
     border: rem(1) solid #ffffff65;
     color: #F9F4DA;
+    position: relative;
+
+    transition: 0.5s ease;
+    overflow: hidden;
+    animation: heightup 1s linear forwards;
+
+    &.is-close{
+        pointer-events: none;
+        animation: heightdown 4s linear forwards;
+    }
+
+
+    @keyframes heightdown {
+        0%{
+            padding-block: rem(10);
+            height: rem(180);
+        }
+        100%{
+            padding-block: rem(0);
+            height:rem(0);
+        }
+    }
+    @keyframes heightup {
+        0%{
+            padding-block: rem(0);
+            height: rem(0);
+        }
+        100%{
+            padding-block: rem(10);
+            height:rem(180);
+        }
+    }
     
     &__content{
         display: grid;
@@ -73,5 +105,16 @@
         @include hover{
             background-color: rgb(96, 100, 96);
         }
+    }
+
+    &__btn-chevron{
+        @include square(rem(30));
+        padding: 0;
+        position: absolute;
+        border: 0;
+        background-color: transparent;
+        bottom: rem(0);
+        left: 50%;
+        transform: translateX(-50%);
     }
 }

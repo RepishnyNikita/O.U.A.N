@@ -380,7 +380,6 @@ button[aria-label]::before {
   padding: 0.3125rem 0.625rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   row-gap: 0.625rem;
   align-items: center;
   max-width: 43.75rem;
@@ -466,7 +465,7 @@ button[aria-label]::before {
 }
 
 .debt-container {
-  padding: 0.625rem;
+  padding-inline: 0.625rem;
   display: grid;
   row-gap: 0.3125rem;
   width: 100%;
@@ -474,6 +473,34 @@ button[aria-label]::before {
   background-color: rgba(0, 0, 0, 0.5607843137);
   border: 0.0625rem solid rgba(255, 255, 255, 0.3960784314);
   color: #F9F4DA;
+  position: relative;
+  transition: 0.5s ease;
+  overflow: hidden;
+  animation: heightup 1s linear forwards;
+}
+.debt-container.is-close {
+  pointer-events: none;
+  animation: heightdown 4s linear forwards;
+}
+@keyframes heightdown {
+  0% {
+    padding-block: 0.625rem;
+    height: 11.25rem;
+  }
+  100% {
+    padding-block: 0rem;
+    height: 0rem;
+  }
+}
+@keyframes heightup {
+  0% {
+    padding-block: 0rem;
+    height: 0rem;
+  }
+  100% {
+    padding-block: 0.625rem;
+    height: 11.25rem;
+  }
 }
 .debt-container__content {
   display: grid;
@@ -539,6 +566,17 @@ button[aria-label]::before {
     background-color: rgb(96, 100, 96);
   }
 }
+.debt-container__btn-chevron {
+  width: 1.875rem;
+  height: 1.875rem;
+  padding: 0;
+  position: absolute;
+  border: 0;
+  background-color: transparent;
+  bottom: 0rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
 .main-mechanics {
   width: 100%;
@@ -586,6 +624,55 @@ button[aria-label]::before {
   font-weight: 600;
   z-index: 1;
   transition: 0.5s ease-in-out;
+}
+
+.battery {
+  align-self: flex-start;
+  padding: 0.125rem;
+  border-radius: 0.125rem;
+  max-width: clamp(7.5rem, 6.862745098rem + 2.614379085vw, 10rem);
+  width: 100%;
+  height: clamp(1.875rem, 1.7156862745rem + 0.6535947712vw, 2.5rem);
+  border: 0.125rem solid #fff;
+  position: relative;
+}
+.battery__body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+}
+.battery__content {
+  display: flex;
+  column-gap: 0.625rem;
+  color: #F9F4DA;
+  font-weight: 600;
+}
+.battery__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(75, 175, 70, 0.664);
+  width: 100%;
+  z-index: -1;
+  border-radius: 0.125rem;
+}
+.battery__tip {
+  position: absolute;
+  right: -0.625rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.625rem;
+  height: 0.875rem;
+  border-top-right-radius: 0.125rem;
+  border-bottom-right-radius: 0.125rem;
+  background-color: #fff;
 }
 
 .timer {
@@ -654,10 +741,10 @@ button[aria-label]::before {
   align-items: center;
   justify-content: center;
   gap: 0.625rem 0.3125rem;
-  min-height: clamp(3.125rem, 1.5318627451rem + 6.5359477124vw, 9.375rem);
   border: 0.0625rem solid #fff;
   border-radius: 0.625rem;
   position: relative;
+  transition: height 5s liner;
 }
 .actions-container-grid {
   display: grid;
@@ -679,8 +766,8 @@ button[aria-label]::before {
   border: 0;
 }
 .actions-container-cancellation img {
-  width: clamp(1.25rem, 1.1703431373rem + 0.3267973856vw, 1.5625rem);
-  height: clamp(1.25rem, 1.1703431373rem + 0.3267973856vw, 1.5625rem);
+  width: clamp(1.5625rem, 1.4828431373rem + 0.3267973856vw, 1.875rem);
+  height: clamp(1.5625rem, 1.4828431373rem + 0.3267973856vw, 1.875rem);
 }
 @media (any-hover: hover) {
   .actions-container-cancellation:hover {
@@ -952,7 +1039,7 @@ button[aria-label]::before {
 .items {
   background-color: transparent;
   border: 0;
-  width: clamp(2.5rem, 2.181372549rem + 1.3071895425vw, 3.75rem);
+  width: clamp(3.125rem, 2.9656862745rem + 0.6535947712vw, 3.75rem);
 }
 .items-target {
   padding: 0.3125rem;
@@ -1005,12 +1092,17 @@ button[aria-label]::before {
 }
 .black-market-item {
   display: grid;
+  align-items: center;
   grid-template-columns: repeat(3, 1fr);
 }
 .black-market-item span:nth-child(2) {
   justify-self: center;
 }
+.black-market-item img {
+  width: clamp(1.875rem, 1.6360294118rem + 0.9803921569vw, 2.8125rem);
+}
 .black-market-bue {
+  padding: clamp(0.375rem, 0.2794117647rem + 0.3921568627vw, 0.75rem);
   background-color: #7A7974;
   border: 0.0625rem solid #000;
   border-radius: 0.3125rem;
@@ -1064,7 +1156,7 @@ button[aria-label]::before {
   right: 0;
   bottom: 0;
   padding: 1.25rem;
-  max-width: 25rem;
+  max-width: 20rem;
   width: 100%;
   border: 0.125rem solid #fff;
   background-color: #414141;

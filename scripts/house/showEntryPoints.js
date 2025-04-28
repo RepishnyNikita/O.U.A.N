@@ -1,7 +1,7 @@
 import { clearActions, addAction, addToLog } from "../utils.js";
 import { game } from "../variables-game.js";
 import { entryTypes } from "./entryTypes.js";
-import updateUI from "../updateUI.js";
+import updateUI from "../updatesUI.js";
 import attemptEntry from "./attemptEntry.js";
 import updateInventory from "../updateInventory.js";
 import endRobbery from "../endRobbery.js";

@@ -50,13 +50,19 @@
 
     &-item{
         display: grid;
+        align-items: center;
         grid-template-columns: repeat(3, 1fr);
         & span:nth-child(2){
             justify-self: center;
         }
+
+        & img{
+            width: fluid(45,30);
+        }
     }
 
     &-bue {
+        padding: fluid(12,6);
         background-color: #7A7974;
         border: rem(1) solid #000;
         border-radius: rem(5);

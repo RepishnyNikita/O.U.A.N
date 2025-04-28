@@ -1,12 +1,12 @@
 export const game = {
     energy:{
-        currentEnergy: 15,
-        maxEnergy: 15,
+        currentEnergy: 80,
+        maxEnergy: 80,
         energyRegenInterval: null,
         energyRegenTimer: 60,
     },
     economy:{
-        money: 0,
+        money: 10000,
         totalMoney: 0,
         debtPaid: 0,
         baseFine:1000,
@@ -30,9 +30,9 @@ export const game = {
         maxDebt: 10000,
     },
 
-
+    startRobbery:false,
     timeLeft: 480,
-    inventory: [],
+    inventory: ['отмычка','ваза','часы'],
     inventorySlots: 6,
 
     currentHouse: null,

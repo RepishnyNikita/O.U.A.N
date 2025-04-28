@@ -1,9 +1,8 @@
 import endRobbery from "../endRobbery.js";
 import { entryTypes } from "./entryTypes.js";
-import updateUI from "../updateUI.js";
+import updateUI, { updateEnergyUI } from "../updatesUI.js";
 import { clearActions, addToLog } from "../utils.js";
 import { game } from "../variables-game.js";
-import { updateEnergyUI } from "../energyRegen.js";
 import enterHouse from "./enterHouse.js";
 import { ICON } from "../assets.js";
 

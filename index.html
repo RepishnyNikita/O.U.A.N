@@ -11,6 +11,7 @@
     <main class="game-field" data-js-game-field>
         <div class="game-header">
             <h1>Грабежник</h1>
+            
             <button class="game-header__btn" data-js-button-burger>
                 <img src="icon/burgerButton.svg" alt="">
             </button>
@@ -21,7 +22,7 @@
             </div>
         </div>
         <!----------------------->
-        <div class="debt-container">
+        <div class="debt-container" data-js-debt-container>
             <div class="debt-container__content">
                 <p class="debt-container__content-desc">
                     Задолжность Фродо Беккенсу
@@ -51,18 +52,41 @@
                     <button class="debt-container__btn-pay" data-js-debt-police-pay-btn></button>
                 </div>
             </div>
+
+            <button class="debt-container__btn-chevron" data-js-debt-container-btn-chevron>
+                <img src="icon/uiIcon/down-chevron.png" alt="">
+            </button>
         </div>
         <!----------------------->
-        <div class="energy-bar"> 
+        <!-- <div class="energy-bar"> 
             <div class="energy-bar__inner">
                 <div class="energy-bar__regen-count" data-js-energy-count></div>
                 <span class="energy-bar__regen-timer" data-js-energy-timer></span>
             </div>
             <div class="energy-bar__fill" data-js-energy-fill></div>
+        </div> -->
+
+        <div class="battery">
+            <div class="battery__body">
+                <div class="battery__content">
+                    <div class="battery__content-count" data-js-energy-count>
+                        
+                    </div>
+                    <div class="battery__content-timer" data-js-energy-timer>
+                        
+                    </div>
+                </div>
+                <div class="battery__fill" data-js-energy-fill></div>
+            </div>
+            <div class="battery__tip"></div> 
         </div>
+
         <!-- ----------------- -->
         <div class="shops-container">
-            <div class="money" data-js-money></div>
+            <div class="money">
+                <span data-js-money></span>
+                <img src="icon/total-money.png" alt="money icon">
+            </div>
             <div class="shops-container__buttons" data-js-shops-buttons>
                 <button class="shops-container__button" data-js-black-market-btn>
                     Купить

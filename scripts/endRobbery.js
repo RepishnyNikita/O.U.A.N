@@ -1,17 +1,19 @@
 import showMainMenu from "./showMainMenu.js";
 import { game } from "./variables-game.js";
-import updateUI from "./updateUI.js";
+import updateUI from "./updatesUI.js";
 import { containerElements } from "./dom-elements.js";
+import { showAndHideShop } from "./utils.js";
 
 // Завершение ограбления
 export default function endRobbery() {
     clearInterval(game.gameInterval);
+     containerElements.debtContainer.classList.remove('is-close')
     
     if (game.events.eventTimer) {
         clearTimeout(game.events.eventTimer);
         game.events.eventTimer = null;
     }
-    containerElements.actionsContainer.classList.remove('actions-container-grid-3-cols')
+    // containerElements.actionsContainer.classList.remove('actions-container-grid-3-cols')
 
     game.currentHouse= null
     
@@ -29,4 +31,5 @@ export default function endRobbery() {
     containerElements.gamefieldInfo.classList.remove('is-visuality')
     updateUI()
     showMainMenu(); 
+    showAndHideShop()
 }

@@ -1,5 +1,6 @@
 import updateInventory from "../updateInventory.js";
-import { addToLog, updateMoneyUI } from "../utils.js";
+import { updateMoneyUI } from "../updatesUI.js";
+import { addToLog} from "../utils.js";
 import { game } from "../variables-game.js";
 
 // Покупка предмета

@@ -2,6 +2,7 @@ import { game } from "./variables-game.js";
 import handleArrest from './handleArrest.js';
 import endRobbery from "./endRobbery.js";
 import { ICON } from "./assets.js";
+import { updateTimerUI } from "./updatesUI.js";
 
 export default function startTimer() {
     clearInterval(game.gameInterval);
@@ -17,9 +18,4 @@ export default function startTimer() {
     }, 1000);
 }
 
-export const updateTimerUI = () => {
-    const minutes = Math.floor(game.timeLeft / 60);
-    const seconds = game.timeLeft % 60;
-    document.querySelector("[data-js-timer]").innerText = 
-        `${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-}
+

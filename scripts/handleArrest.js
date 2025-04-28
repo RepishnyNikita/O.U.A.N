@@ -2,7 +2,7 @@ import { addToLog } from "./utils.js";
 import endGame from "./endGame.js";
 import { game } from "./variables-game.js";
 import { ICON } from "./assets.js";
-import { buttonElements } from "./dom-elements.js";
+
 
 export default function handleArrest() {
   game.police.currentDebt += game.police.baseFine;
@@ -36,13 +36,3 @@ export default function handleArrest() {
   updatePoliceDebtUI();
 }
 
-export const updatePoliceDebtUI = () => {
-  document.querySelector(
-    "[data-js-debt-amount]"
-  ).innerHTML = `<i>$</i>${game.police.currentDebt.toLocaleString('en-US')}`;
-  document.querySelector('[data-js-debt-total-police]').innerHTML = `/ <i>$</i>${game.police.maxDebt.toLocaleString("en-US")}`
-  buttonElements.debtPolicePay.innerHTML= `
-    <span>Внести</span>
-    <span>$${game.police.baseFine.toLocaleString('en-US')}</span> 
-`;
-};

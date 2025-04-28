@@ -1,13 +1,11 @@
-//!ВЫБОР ДОМА
-import { addToLog, clearActions, addAction, clearLog } from "../utils.js";
-import { game } from "../variables-game.js";
 import generateHouse from "./generateHouse.js";
+import { addToLog, clearActions, addAction } from "../utils.js";
+import { game } from "../variables-game.js";
 import startRobbery from "../startRobbery.js";
-import updateShowTargetItem from "./updateShowTargetItem.js";
 import { containerElements } from "../dom-elements.js";
 import endRobbery from "../endRobbery.js";
-import showEventNotification from "../events/showEventsNotification.js";
 import { ICON } from "../assets.js";
+import {updateEventNotification, updateShowTargetItem} from '../updatesUI.js'
 
 const houseIconsSrc = [
   { house: "icon/homes/home-1.png" },
@@ -52,9 +50,10 @@ export default function selectHouse() {
         game.visitedRooms = [];
         game.targetItemFound = false;
         containerElements.gamefieldInfo.classList.add("is-visuality");
-        showEventNotification();
+        updateEventNotification();
         updateShowTargetItem();
         startRobbery(i);
+        // console.log(game.currentHouse.rooms );
       },
       "button-actions-flex reverse",
       houseIconsSrc[i - 1].house

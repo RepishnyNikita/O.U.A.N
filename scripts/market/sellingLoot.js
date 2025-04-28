@@ -14,8 +14,8 @@ export default function sellingLoot() {
 
   const sellableItems = game.inventory.filter(
     (item) => items[item].type !== "tool"
-  ); // Ищем все что не инструменты
-
+  ); 
+  
   if (sellableItems.length === 0) {
     addToLog("Нет предметов для продажи!", "danger");
     return;
@@ -27,10 +27,9 @@ export default function sellingLoot() {
       if (item === itemMod) {
         const row = document.createElement("li");
         row.className = "black-market-item";
-
-        const nameItem = document.createElement("span");
-        nameItem.textContent = item;
-        row.appendChild(nameItem);
+        const iconItem = document.createElement("img");
+        iconItem.src = items[item].icon
+        row.appendChild(iconItem);
 
         const priceItem = document.createElement("span");
         const price = game.sellMarketModifiers[itemMod].currentPrice;

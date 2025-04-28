@@ -1,13 +1,17 @@
 import { game } from "../../variables-game.js";
 import buyItem from "../buyItem.js";
-import { addToLog, updateMoneyUI } from "../../utils.js";
+import { addToLog } from "../../utils.js";
 import updateInventory from "../../updateInventory.js";
+import { updateMoneyUI } from "../../updatesUI.js";
+import { items } from "../../items.js";
+
 
 // Черный рынок
 export default function showBlackMarket() {
   addToLog("Вы вошли на черный рынок:", "market");
   document.querySelector("[data-js-black-market]").style.display = "grid";
-  document.querySelector("[data-js-black-market-money]").textContent = game.economy.money;
+  document.querySelector("[data-js-black-market-money]").textContent =
+    game.economy.money;
 
   const itemsList = document.querySelector("[data-js-black-market-list]"); // Нахходим наш контейнер
   itemsList.innerHTML = "";
@@ -17,9 +21,9 @@ export default function showBlackMarket() {
     const row = document.createElement("li");
     row.className = "black-market-item";
     //
-    const nameItem = document.createElement("span");
-    nameItem.textContent = item;
-    row.appendChild(nameItem); //Добавили спан
+    const iconItem = document.createElement("img");
+    iconItem.src = items[item].icon;
+    row.appendChild(iconItem);
     //
     const priceItem = document.createElement("span");
     const price = game.marketModifiers[item].currentPrice;
@@ -112,4 +116,6 @@ document
     document.querySelector("[data-js-black-market]").style.display = "none";
   });
 
-  document.querySelector('[data-js-black-market-btn]').addEventListener('click',showBlackMarket)
+document
+  .querySelector("[data-js-black-market-btn]")
+  .addEventListener("click", showBlackMarket);

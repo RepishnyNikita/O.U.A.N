@@ -4,6 +4,11 @@ import showMainMenu from "../showMainMenu.js";
 import { ICON } from "../assets.js";
 
 export default function saveGame() {
+  if(game.startRobbery){
+    addToLog('Нельзя cохранить игру во время ограбления!', 'red', ICON.X_MARK)
+    return
+  }
+
   const saveData = {
     energy: game.energy.currentEnergy,
     maxEnergy: game.energy.maxEnergy,
@@ -37,8 +42,12 @@ export default function saveGame() {
 
 function autoSave(time) {
   setInterval(() => {
-    addToLog(`Автосохранения каждые ${time} минут`,'green',ICON.CHECK_MARK);
+    if(game.startRobbery){
+      addToLog('Вы в ограблении, автосохранение не работает')
+      return
+    }
     saveGame();
+    addToLog(`Автосохранения каждые ${time} минут`,'green',ICON.CHECK_MARK);
   },time * 60 * 1000);
 }
 autoSave(5)

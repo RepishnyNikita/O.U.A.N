@@ -1,4 +1,3 @@
-import { ICON } from "./assets.js";
 import { containerElements, buttonElements } from "./dom-elements.js";
 import { game } from "./variables-game.js";
 
@@ -49,25 +48,8 @@ export const addToLog = (text, type ,icon) => {
   containerElements.logContainer.scrollTop = containerElements.logContainer.scrollHeight;
 };
 
-export const updateMoneyUI = () => {
-  const moneyContainer = document.querySelector("[data-js-money]");
-  const icon = document.createElement("img");
-  icon.src = ICON.TOTAL_MONEY;
-  moneyContainer.innerText = `$${game.economy.money.toLocaleString('en-US')}`;
-  moneyContainer.appendChild(icon);
-};
-
-// Обновление таймера рынка в UI
-export const updateMarketTimerUI = () => {
-  //!ВЫНЕСТи
-  document.querySelector("[data-js-black-market-timer]").textContent =
-    game.marketTimer;
-  document.querySelector("[data-js-sell-market-timer]").textContent =
-    game.marketTimer;
-};
 
 export const showAndHideShop = () => {
-  //!ВЫНЕСТи
   Object.assign(buttonElements.shopsButtons.style, {
     pointerEvents: !game.hiddenStore ? "all" : "none",
     opacity: !game.hiddenStore ? "1" : "0.7",
