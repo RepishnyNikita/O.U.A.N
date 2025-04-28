@@ -13,11 +13,17 @@
 
     transition: 0.5s ease;
     overflow: hidden;
-    animation: heightup 1s linear forwards;
+    animation: heightup 0.5s linear forwards;
 
     &.is-close{
-        pointer-events: none;
-        animation: heightdown 4s linear forwards;
+        animation: heightdown 0.5s linear forwards;
+
+        .debt-container{
+            &__btn-chevron{
+                
+                transform: rotate(0deg);
+            }
+        }
     }
 
 
@@ -28,13 +34,13 @@
         }
         100%{
             padding-block: rem(0);
-            height:rem(0);
+            height:fluid(33,25);
         }
     }
     @keyframes heightup {
         0%{
             padding-block: rem(0);
-            height: rem(0);
+            height:fluid(33,25);
         }
         100%{
             padding-block: rem(10);
@@ -97,6 +103,7 @@
         color: inherit;
         border-radius: rem(5);
         font-weight: 700;
+        
 
         & span:last-child{
             color: #9CAE6A;
@@ -108,13 +115,15 @@
     }
 
     &__btn-chevron{
-        @include square(rem(30));
+        @include square(fluid(30,25));
         padding: 0;
         position: absolute;
         border: 0;
         background-color: transparent;
-        bottom: rem(0);
-        left: 50%;
-        transform: translateX(-50%);
+        top: 0;
+        right: rem(10);
+        z-index: 111;
+        transform: rotate(180deg);
+        transition: 0.5s ease-in-out;
     }
 }

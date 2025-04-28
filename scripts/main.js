@@ -8,6 +8,7 @@ import { addToLog, clearLog, showAndHideShop } from "./utils.js";
 import initModifiers from "./market/initModifiers.js";
 import loadGame from "./saveAndLoadGame/loadGame.js";
 import saveGame from "./saveAndLoadGame/saveGame.js";
+import { containerElements } from "./dom-elements.js";
 
 export default function initGame() {
   updateUI();
@@ -16,9 +17,12 @@ export default function initGame() {
   showAndHideShop()
   initDebtPaymentHandlers()
 
-
+  document.querySelector('[data-js-debt-container-btn-chevron]').addEventListener('click',()=>{
+    containerElements.debtContainer.classList.toggle('is-close')
+  })
+  
   document.querySelector('[data-js-button-burger]').addEventListener('click',()=>{
-    document.querySelector('[data-js-header-dialog]').classList.toggle('is-open')
+    document.querySelector('[data-js-header-dialog]').classList.toggle('is-close')
   })
 
   document

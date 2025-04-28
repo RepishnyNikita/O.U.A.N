@@ -396,7 +396,6 @@ button[aria-label]::before {
   align-items: center;
   justify-content: space-between;
   column-gap: 0.3125rem;
-  border: 0.0625rem solid #a5a4a4;
   opacity: 0;
   pointer-events: none;
   transform: rotateX(90deg);
@@ -476,11 +475,13 @@ button[aria-label]::before {
   position: relative;
   transition: 0.5s ease;
   overflow: hidden;
-  animation: heightup 1s linear forwards;
+  animation: heightup 0.5s linear forwards;
 }
 .debt-container.is-close {
-  pointer-events: none;
-  animation: heightdown 4s linear forwards;
+  animation: heightdown 0.5s linear forwards;
+}
+.debt-container.is-close .debt-container__btn-chevron {
+  transform: rotate(0deg);
 }
 @keyframes heightdown {
   0% {
@@ -489,13 +490,13 @@ button[aria-label]::before {
   }
   100% {
     padding-block: 0rem;
-    height: 0rem;
+    height: clamp(1.5625rem, 1.4350490196rem + 0.522875817vw, 2.0625rem);
   }
 }
 @keyframes heightup {
   0% {
     padding-block: 0rem;
-    height: 0rem;
+    height: clamp(1.5625rem, 1.4350490196rem + 0.522875817vw, 2.0625rem);
   }
   100% {
     padding-block: 0.625rem;
@@ -567,15 +568,17 @@ button[aria-label]::before {
   }
 }
 .debt-container__btn-chevron {
-  width: 1.875rem;
-  height: 1.875rem;
+  width: clamp(1.5625rem, 1.4828431373rem + 0.3267973856vw, 1.875rem);
+  height: clamp(1.5625rem, 1.4828431373rem + 0.3267973856vw, 1.875rem);
   padding: 0;
   position: absolute;
   border: 0;
   background-color: transparent;
-  bottom: 0rem;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0;
+  right: 0.625rem;
+  z-index: 111;
+  transform: rotate(180deg);
+  transition: 0.5s ease-in-out;
 }
 
 .main-mechanics {
