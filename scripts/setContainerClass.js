@@ -11,10 +11,10 @@ export const setContainerClass = (newClass) => {
     return;
   }
   if(newClass === 'actions-container--grid'){
-    container.style.backgroundImage = 'url("../image/bg-3.jpg")'
+    container.style.backgroundImage = 'url("./image/bg-3.jpg")'
   }
   if(newClass === 'actions-container--column'){
-    container.style.backgroundImage = 'url("../image/bg-2.jpg")'
+    container.style.backgroundImage = 'url("./image/bg-2.jpg")'
   }
  
   container.classList.remove(...className);

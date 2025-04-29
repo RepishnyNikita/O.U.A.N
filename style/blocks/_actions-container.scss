@@ -12,6 +12,7 @@
     border: rem(1) solid #fff;
     border-radius: rem(10);
     min-height: rem(30);
+    max-height: rem(400);
     flex-grow: 1;
     background-image: url('../image/bg-2.jpg');
     background-position: center;
@@ -19,7 +20,7 @@
     background-repeat: no-repeat;
 
     @include mobile{
-        padding: 0;
+        padding-inline: 0;
     }
     
     &--column{

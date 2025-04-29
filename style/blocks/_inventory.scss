@@ -2,7 +2,7 @@
 
 .inventory{
     margin-top: auto;
-    padding: fluid(10,5) fluid(15,5);
+    padding: fluid(15,10) fluid(20,10);
     width: 100%;
     display: flex;
     align-items: center;
@@ -16,7 +16,7 @@
     }
 
     &-slot{
-        @include square(fluid(55,45));
+        @include square(fluid(60,50));
         padding: rem(5);
         border:rem(2) solid #F9F4DA;
         display: flex;

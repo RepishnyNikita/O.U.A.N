@@ -10,17 +10,33 @@
 </head>
 <body>
     <main class="game-field" data-js-game-field>
+        
         <div class="game-header">
-            <h1>Грабежник</h1>
+            <div class="battery">
+                <div class="battery__body">
+                    <div class="battery__content">
+                        <div class="battery__content-count" data-js-battery-count></div>
+                        <div class="battery__content-timer" data-js-battery-timer></div>
+                    </div>
+                    <div class="battery__fill" data-js-battery-fill></div>
+                </div>
+                <div class="battery__tip"></div> 
+            </div>
             
             <button class="game-header__btn" data-js-button-burger>
                 <img src="icon/burgerButton.svg" alt="">
             </button>
-            <div class="game-header-dialog" data-js-header-dialog>
-                <button class="game-saved-button" data-js-saved-button>Сохранить игру</button>
-                <button class="game-saved-button" data-js-load-button>Загрузить игру</button>
-                <button class="game-saved-button" data-js-statistics-modal-open>Статистика</button>
+
+            <div class="money">
+                <img src="icon/total-money.png" alt="money icon">
+                <span data-js-money></span>
             </div>
+        </div>
+
+        <div class="game-header-dialog" data-js-header-dialog>
+            <button class="game-saved-button" data-js-saved-button>Сохранить игру</button>
+            <button class="game-saved-button" data-js-load-button>Загрузить игру</button>
+            <button class="game-saved-button" data-js-statistics-modal-open>Статистика</button>
         </div>
         <!----------------------->
         <div class="debt-container" data-js-debt-container>
@@ -58,36 +74,7 @@
                 <img src="icon/uiIcon/down-chevron.png" alt="">
             </button>
         </div>
-        <!----------------------->
 
-        <div class="battery">
-            <div class="battery__body">
-                <div class="battery__content">
-                    <div class="battery__content-count" data-js-battery-count></div>
-                    <div class="battery__content-timer" data-js-battery-timer></div>
-                </div>
-                <div class="battery__fill" data-js-battery-fill></div>
-            </div>
-            <div class="battery__tip"></div> 
-        </div>
-
-        <!-- ----------------- -->
-        <div class="shops-container">
-            <div class="money">
-                <span data-js-money></span>
-                <img src="icon/total-money.png" alt="money icon">
-            </div>
-            <div class="shops-container__buttons" data-js-shops-buttons>
-                <button class="shops-container__button" data-js-black-market-btn>
-                    Купить
-                    <img src="icon/pay.png" alt="" width="25" height="25" loading="lazy">
-                </button>
-                <button class="shops-container__button" data-js-sell-market-btn>
-                    Продать
-                    <img src="icon/sell.png" alt="" width="25" height="25" loading="lazy">
-                </button>
-            </div>
-        </div>
         <!-- ----------------- -->
         <div class="log">
             <div class="log__content" data-js-log></div>
@@ -110,6 +97,28 @@
         <div class="inventory" data-js-inventory></div>
         <!-- ----------------- -->
         
+        <!--статистика-->
+        <dialog class="statistics-modal" data-js-statistics-modal>
+            <div class="statistics-modal-content" data-js-statistics-modal-content></div>
+            <button class="statistics-modal-btn-restart" data-js-restart-game>Начать заного</button>
+            <button class="statistics-modal-btn-close" data-js-statistics-modal-close>Закрыть окно</button>
+        </dialog>
+        <div class="shops-container__buttons" data-js-shops-buttons>
+            <!-- <button class="shops-container__button" data-js-black-market-btn>
+                Купить
+                <img src="icon/pay.png" alt="" width="25" height="25" loading="lazy">
+            </button>
+            <button class="shops-container__button" data-js-sell-market-btn>
+                Продать
+                <img src="icon/sell.png" alt="" width="25" height="25" loading="lazy">
+            </button> -->
+        </div>
+        <footer class="game-footer">
+            <button class="game-footer__controls" data-js-black-market-btn>Купить</button>
+            <button class="game-footer__controls">Инвентарь</button>
+            <button class="game-footer__controls" data-js-sell-market-btn>Продать</button>
+            <button class="game-footer__controls">Быстрый слот</button>
+        </footer>
 
         <!-- покупка -->
         <div class="black-market" data-js-black-market>
@@ -129,7 +138,6 @@
             </div>
             <div class="black-market-timer">Изменение цен через:<span data-js-black-market-timer></span></div>
         </div>
-
         <!-- продажа -->
         <div class="black-market" data-js-sell-market>
             <button class="black-market-close-btn" data-js-sell-market-close-btn>Х</button>
@@ -148,14 +156,6 @@
             </div>
             <div class="black-market-timer">Изменение цен через:<span data-js-sell-market-timer></span></div>
         </div>
-        <!--статистика-->
-        <dialog class="statistics-modal" data-js-statistics-modal>
-            <div class="statistics-modal-content" data-js-statistics-modal-content></div>
-            <button class="statistics-modal-btn-restart" data-js-restart-game>Начать заного</button>
-            <button class="statistics-modal-btn-close" data-js-statistics-modal-close>Закрыть окно</button>
-        </dialog>
-
-
     </main>
 </body>
 </html>
