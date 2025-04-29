@@ -23,6 +23,7 @@ export default function loadGame() {
       game.economy.totalMoney = saveData.totalMoney;
       game.economy.money = saveData.money;
       game.economy.debtPaid = saveData.debtPaid;
+      game.economy.spentOnPurchase = saveData.spentOnPurchase;
       game.inventory = saveData.inventory;
       game.inventorySlots = saveData.inventorySlots;
       game.totalHeists = saveData.totalHeists || 0;

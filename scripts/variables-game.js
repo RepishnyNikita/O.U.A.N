@@ -12,6 +12,7 @@ export const game = {
         baseFine:1000,
         totalDebt: 80000,
         maxDebt: 80000,
+        spentOnPurchase:0
     },
     events:{
         activeEvent: null,

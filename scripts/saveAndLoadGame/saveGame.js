@@ -15,6 +15,7 @@ export default function saveGame() {
     money: game.economy.money,
     totalMoney: game.economy.totalMoney,
     debtPaid: game.economy.debtPaid,
+    spentOnPurchase: game.economy.spentOnPurchase,
 
     policeDebt: game.police.currentDebt,
     policeTotalDebt: game.police.totalDebt,

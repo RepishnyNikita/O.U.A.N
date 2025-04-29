@@ -48,7 +48,6 @@ export const addToLog = (text, type ,icon) => {
   containerElements.logContainer.scrollTop = containerElements.logContainer.scrollHeight;
 };
 
-
 export const showAndHideShop = () => {
   Object.assign(buttonElements.shopsButtons.style, {
     pointerEvents: !game.hiddenStore ? "all" : "none",

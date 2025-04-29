@@ -2,14 +2,14 @@ import { clearActions, addAction, addToLog } from "../utils.js";
 import { game } from "../variables-game.js";
 import attemptEscape from "./attemptEscape.js";
 import enterRoom from "./enterRoom.js";
-import { containerElements} from "../dom-elements.js";
 import { ICON } from "../assets.js";
-
+import { setContainerClass } from "../setContainerClass.js";
 let visitedHouse = false;
 
 // Вход в дом
 export default function enterHouse() {
   clearActions();
+  setContainerClass('actions-container--grid')
   addToLog(`Вы внутри дома`, 'gray', ICON.HOUSE);
 
   if (!visitedHouse) {
@@ -17,18 +17,15 @@ export default function enterHouse() {
     visitedHouse = true;
   }
 
-  // containerElements.actionsContainer.classList.add("actions-container-grid-3-cols");
-
   Object.keys(game.currentHouse.rooms).forEach((room) => {
     const isVisitedRoom = game.visitedRooms.includes(room)
-      ? "Посищено"
-      : "Осмотреть";
     addAction(
-      `${isVisitedRoom} ${room}`,
+      `${room}`,
       () => enterRoom(room),
-      isVisitedRoom === "Посищено"
-        ? "button-actions-flex is-visited"
-        : "button-actions-flex"
+      isVisitedRoom
+        ? "button-actions button-actions--is-visited"
+        : "button-actions",
+      ICON.SEARCH
     );
   });
 
@@ -38,8 +35,9 @@ export default function enterHouse() {
     () => {
       visitedHouse = false;
       attemptEscape();
+      setContainerClass()
     },
-    "actions-container-cancellation",
+    "button-actions button-actions--control-back",
     ICON.EXIT
   );
 }

@@ -1,6 +1,7 @@
 @use '../helpers/' as *;
 
 .inventory{
+    margin-top: auto;
     padding: fluid(10,5) fluid(15,5);
     width: 100%;
     display: flex;

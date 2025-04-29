@@ -1,7 +1,7 @@
 @use 'helpers' as *;
 
 :root{
-    --color-light:#ffffff;
+    --color-light:#F9F4DA;
 
     --color-dark:#141414;
     --color-dark-10:#1A1A1A;
@@ -12,10 +12,14 @@
     --color-gray-50:#7E7E81;
     --color-gray-60:#98989A;
 
-    --color-accent:#FFD11A;
-    --color-red:#FF5500;
+    --color-accent:#FFD77F;
+    --color-accent-opecity:rgba(255, 214, 127, 0.4);
 
-    --gradient: 45deg, var(--color-dark-15) 64% , var(--color-accent) 136%;
+    --color-red:#ED4848;
+    --color-green:#3FD83F;
+
+    --gradient-gold: linear-gradient(180deg, #ffd77f 40%, #8b681a 100%);
+
     --border: #{rem(1) solid var(--color-dark-15)};
 
     --font-family-base: 'Inter', sans-serif;

@@ -32,8 +32,8 @@ export default function generateHouse() {
         "garage-" + Date.now() + "-" + Math.random().toString(36).substr(2, 5),
     });
   }
-  console.log(rooms['кухня'].items);
-  
+
+
   let availableRooms = Object.keys(rooms); //копируем комнаты
   const roomCount = Math.min(availableRooms.length, Math.floor(Math.random() * 5) + 3); //рандомим комнаты в доме(число)
 
@@ -72,7 +72,7 @@ export default function generateHouse() {
     // }
 
     generatedRooms[roomName] = room; // наши комнаты на дома
-    console.log(generatedRooms[roomName].items);
+    
   });
 
   console.log('ГЕНЕРАЦИЯ');

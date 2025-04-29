@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./style/main.css">
     <title>Грабежник</title>
     <script src="./scripts/main.js" type="module" defer></script>
+
 </head>
 <body>
     <main class="game-field" data-js-game-field>
@@ -62,14 +63,10 @@
         <div class="battery">
             <div class="battery__body">
                 <div class="battery__content">
-                    <div class="battery__content-count" data-js-energy-count>
-                        
-                    </div>
-                    <div class="battery__content-timer" data-js-energy-timer>
-                        
-                    </div>
+                    <div class="battery__content-count" data-js-battery-count></div>
+                    <div class="battery__content-timer" data-js-battery-timer></div>
                 </div>
-                <div class="battery__fill" data-js-energy-fill></div>
+                <div class="battery__fill" data-js-battery-fill></div>
             </div>
             <div class="battery__tip"></div> 
         </div>
@@ -92,7 +89,12 @@
             </div>
         </div>
         <!-- ----------------- -->
-
+        <div class="log">
+            <div class="log__content" data-js-log></div>
+            <button class="log__btn-clear" data-js-button-clear-log>
+                <img src="icon/uiIcon/clear.png" alt="button clear log" width="30" height="30">
+            </button>
+        </div>
         <div class="game-field__info" data-js-game-field-info>
             <div class="target-item" data-js-target-item></div>
             <div class="event-notification" data-js-event-notification></div>
@@ -106,13 +108,6 @@
         </div>
         <!-- ----------------- -->
         <div class="inventory" data-js-inventory></div>
-        <!-- ----------------- -->
-        <div class="log">
-            <div class="log__content" data-js-log></div>
-            <button class="log__btn-clear" data-js-button-clear-log>
-                <img src="icon/uiIcon/clear.png" alt="button clear log" width="30" height="30">
-            </button>
-        </div>
         <!-- ----------------- -->
         
 

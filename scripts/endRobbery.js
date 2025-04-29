@@ -7,8 +7,7 @@ import { showAndHideShop } from "./utils.js";
 // Завершение ограбления
 export default function endRobbery() {
     clearInterval(game.gameInterval);
-     containerElements.debtContainer.classList.remove('is-close')
-    
+
     if (game.events.eventTimer) {
         clearTimeout(game.events.eventTimer);
         game.events.eventTimer = null;

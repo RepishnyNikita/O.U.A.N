@@ -1,6 +1,7 @@
 @use '../helpers/' as *;
 
 .actions-container{
+    position: relative;
     padding: rem(10) fluid(40,30);
     width: 100%;
     display: flex;
@@ -10,40 +11,42 @@
     gap: rem(10) rem(5);
     border: rem(1) solid #fff;
     border-radius: rem(10);
-    position: relative;
-    transition: height 5s liner;
+    min-height: rem(30);
+    flex-grow: 1;
+    background-image: url('../image/bg-2.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 
+   
+    &--column{
+        flex-direction: column;
+    }
 
-    &-grid{
+    &--grid{
         display: grid;
+        grid-template-columns: repeat(2,1fr);
         align-content: center;
         gap: rem(10);
-    }
 
-    &-grid-3-cols{
+        @include mobile{
+            padding-right: rem(50);
+        }
+    }
+    &--grid-auto-fit{
         display: grid;
-        grid-template-columns: repeat(3,1fr);
-        align-content: center;
+        grid-template-columns: repeat(auto-fit, minmax(rem(48), 1fr));;
+        align-items: center;
+        justify-items: center;
         gap: rem(10);
-    }
-    
-    &-cancellation{
-        padding: 0;
-        position: absolute;
-        right: fluid(6,2);
-        top: fluid(6,2);
-        background-color: transparent;
-        border: 0;
+        margin: 0 auto;
 
-        img{
-            @include square(fluid(30,25));
-        }
-
-        @include hover{
-            background-color: #f1ffa3;
-            border-radius: rem(6);
+        @include mobile{
+            padding-right: rem(50);
         }
     }
+
+
     &-img{
         display: flex;
         align-items: center;
@@ -55,36 +58,4 @@
         }
     }
 
-    &-btn-img{
-        display: flex;
-        flex-direction: column-reverse;
-        background-color: transparent;
-        border: 0;
-        padding: 0;
-        color: #fff;
-        font-size: rem(20);
-
-        @include hover{
-            scale: 1.1;
-        }
-
-        img{
-            @include square(fluid(65,40));
-        }
-
-        &.disable{
-            position: relative;
-            opacity: 0.4;
-
-            &::after{
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                content: 'закрыто';
-                translate:-50%  -50%;
-                transform: rotate(35deg);
-                
-            }
-        }
-    }
 }

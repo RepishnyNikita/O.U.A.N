@@ -85,14 +85,14 @@ export const updateTimerUI = () => {
 
 export const updateEnergyUI = () => {
   const percent = (game.energy.currentEnergy / game.energy.maxEnergy) * 100;
-  document.querySelector("[data-js-energy-fill]").style.width = `${percent}%`;
+  document.querySelector("[data-js-battery-fill]").style.width = `${percent}%`;
   document.querySelector(
-    "[data-js-energy-count]"
+    "[data-js-battery-count]"
   ).innerHTML = `<span class="energy-bar__regen-count__value">${game.energy.currentEnergy}</span> / <span>${game.energy.maxEnergy}</span>`;
 };
 
 export const updateEnergyRegenUI = () => {
-    const timerElement = document.querySelector("[data-js-energy-timer]");
+    const timerElement = document.querySelector("[data-js-battery-timer]");
     if (game.energy.currentEnergy >= game.energy.maxEnergy) {
       timerElement.textContent = "00:00";
     } else {

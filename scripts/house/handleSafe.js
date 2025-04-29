@@ -18,9 +18,9 @@ export default function handleSafe() {
     addToLog("Вы видите сейф, но вам нечем вломать!", "gray",ICON.X_MARK);
 
     addAction(
-      `Нужна отмычка или декодер`,
       null,
-      "button-actions-flex disabled",
+      null,
+      "button-actions button-actions--safe-disabled",
       ICON.SAFE
     );
     return;
@@ -41,7 +41,7 @@ export default function handleSafe() {
     tools.forEach(tool =>{
       if(game.inventory.includes(tool)){
         addAction(
-          `Взломать ${tool === "отмычка" ? 'отмычкой' : 'декодером'} `,
+          null,
           () => {
             if (game.energy.currentEnergy >= energyCost) {
               game.energy.currentEnergy -= energyCost;
@@ -66,14 +66,14 @@ export default function handleSafe() {
                 () => {
                   takeItem(itemInSafe);
                 },
-                "items",
+                "button-actions button-actions--icon-item",
                 items[itemInSafe].icon
               );
               updateInventory();
               addAction(
                 null,
                 () => attemptExit(game.currentHouse.rooms[game.currentRoom]) ,
-                "actions-container-cancellation",
+                "button-actions button-actions--control-back",
                 ICON.BACK
               );
             } else {
@@ -90,7 +90,7 @@ export default function handleSafe() {
   addAction(
     null,
     () => attemptExit(game.currentHouse.rooms[game.currentRoom]) ,
-    "actions-container-cancellation",
+    "button-actions button-actions--control-back",
     ICON.BACK
   );
 }

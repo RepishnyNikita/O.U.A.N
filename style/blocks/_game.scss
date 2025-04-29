@@ -21,10 +21,11 @@
             align-items: center;
             justify-content: space-between;
             column-gap: rem(5);
-            // border: rem(1) solid #a5a4a4;
+            border: rem(1) solid #a5a4a4;
+            border-radius: rem(5);
+            background-color: rgba(0, 0, 0, 0.267);
             opacity: 0;
             pointer-events: none;
-            // transform: translateY(-100%);
             transform: rotateX(90deg);
             transition: .5s ease-in-out;
             height: 0;
@@ -34,7 +35,6 @@
                 opacity: 1;
                 pointer-events: all;
                 transform: rotateX(0);
-            // transform: translateY(0);
             }
         }
     }

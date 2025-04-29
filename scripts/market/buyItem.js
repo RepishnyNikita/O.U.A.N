@@ -12,6 +12,7 @@ export default function buyItem(itemName, price) {
     }
 
     game.economy.money -= price;
+    game.economy.spentOnPurchase += price
     game.inventory.push(itemName);
     addToLog(`Вы купили ${itemName} за $${price}`, "success");
     updateInventory();

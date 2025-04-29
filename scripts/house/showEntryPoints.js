@@ -8,15 +8,16 @@ import endRobbery from "../endRobbery.js";
 import { items } from "../items.js";
 import triggerEvent from "../events/triggerEvent.js";
 import { randomEvents } from "../events/randomEvents.js";
-import { containerElements } from "../dom-elements.js";
 import { ICON } from "../assets.js";
+import { setContainerClass } from "../setContainerClass.js";
 
 
 // Показать точки входа
 export default function showEntryPoints() {
   clearActions();
+  setContainerClass('actions-container--column') //? подумать
   const entryGroups = {}; 
-  // containerElements.actionsContainer.classList.add('actions-container-grid')
+
   game.currentHouse.entryPoints.forEach((point) => {
     if (!entryGroups[point.type]) {
       entryGroups[point.type] = [];
@@ -30,7 +31,7 @@ export default function showEntryPoints() {
     addAction(
       `Проверить ${entryInfo.description}`,
       () => showSpecificEntryPoints(type),
-      "button-actions-flex",
+      "button-actions button-actions--wide-space",
       entryInfo.icon
     );
   }
@@ -49,7 +50,7 @@ export default function showEntryPoints() {
       addToLog(`Отмена ограбления дома!`, "yellow",ICON.EXIT_MAN);
       endRobbery();
     },
-    "actions-container-cancellation",
+    "button-actions button-actions--control-back",
     ICON.EXIT_MAN
   );
 }
@@ -57,7 +58,8 @@ export default function showEntryPoints() {
 // Показать конкретные точки входа определенного типа
 function showSpecificEntryPoints(type) {
   clearActions();
-  containerElements.actionsContainer.classList.remove('actions-container-grid')
+  setContainerClass()
+
   const entryInfo = entryTypes[type];
   
   addToLog(`Осмотр ${entryInfo.description}:`, null, ICON.SEARCH);
@@ -79,7 +81,7 @@ function showSpecificEntryPoints(type) {
     addAction(
       null,
       () => inspectEntryPoint(point),
-      `actions-container-btn-img ${status === "заперто" && "disable"}`,
+      `button-actions button-actions--icon-button ${status === "заперто" && "disable"}`,
       entryInfo.icon
     );
   });
@@ -87,14 +89,14 @@ function showSpecificEntryPoints(type) {
   addAction(
     null,
     showEntryPoints,
-    "actions-container-cancellation",
+    "button-actions button-actions--control-back",
     ICON.BACK
   );
 }
 
 function inspectEntryPoint(entry) {
   const entryType = entryTypes[entry.type];
-  // Если точка уже проверена
+
   if (game.checkedDoors.includes(entry.id)) {
     if (entry.locked) {
       addToLog(`${entryType.description} заперто.`, "gray", ICON.X_MARK);
@@ -136,6 +138,7 @@ function inspectEntryPoint(entry) {
 function handleLockedEntry(entry) {
   const entryType = entryTypes[entry.type];
   clearActions();
+  setContainerClass('actions-container--column')
 
   // Проверяем, есть ли у нас нужный инструмент
   const hasTool = entryType.tools.some((tool) => game.inventory.includes(tool));
@@ -177,7 +180,7 @@ function handleLockedEntry(entry) {
               );
             }
           },
-          "button-actions-flex",
+          "button-actions",
           items[tool].icon
         );
       }
@@ -187,7 +190,7 @@ function handleLockedEntry(entry) {
       addAction(
         `Нужен инструмент:`,
         null,
-        "button-actions-flex disabled",
+        "button-actions button-actions--disabled",
         items[tool].icon
       );
     });
@@ -196,7 +199,7 @@ function handleLockedEntry(entry) {
   addAction(
     null,
     () => showSpecificEntryPoints(entry.type),
-    "actions-container-cancellation",
+    "button-actions button-actions--control-back",
     ICON.BACK
   );
 }

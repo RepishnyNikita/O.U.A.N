@@ -6,6 +6,7 @@ import { containerElements } from "../dom-elements.js";
 import endRobbery from "../endRobbery.js";
 import { ICON } from "../assets.js";
 import {updateEventNotification, updateShowTargetItem} from '../updatesUI.js'
+import { setContainerClass } from "../setContainerClass.js";
 
 const houseIconsSrc = [
   { house: "icon/homes/home-1.png" },
@@ -15,7 +16,9 @@ const houseIconsSrc = [
 
 export default function selectHouse() {
   clearActions();
-  addToLog(`Выберите дом для ограбления:`, "normal");
+  addToLog(`Выберите дом для ограбления:`, null);
+  setContainerClass('actions-container--column')
+  containerElements.debtContainer.classList.add('is-close')
 
   for (let i = 1; i <= 3; i++) {
     const house = generateHouse();
@@ -53,9 +56,8 @@ export default function selectHouse() {
         updateEventNotification();
         updateShowTargetItem();
         startRobbery(i);
-        // console.log(game.currentHouse.rooms );
       },
-      "button-actions-flex reverse",
+      "button-actions button-actions--wide",
       houseIconsSrc[i - 1].house
     );
   }
@@ -66,7 +68,7 @@ export default function selectHouse() {
       addToLog(`Отмена ограбления!`, "gray", ICON.EXIT_MAN);
       endRobbery();
     },
-    "actions-container-cancellation",
+    "button-actions button-actions--control-back",
     ICON.X_MARK
   );
 }

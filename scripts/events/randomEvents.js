@@ -6,9 +6,6 @@ import { EVENTS_ICON, ICON } from "../assets.js";
 import { rooms } from "../house/rooms.js";
 import { items } from "../items.js";
 
-function random(maxValue){
-  return Math.floor(Math.random() * maxValue)
-}
 
 // Типы случайных событий
 export const randomEvents = {
@@ -48,7 +45,7 @@ export const randomEvents = {
   },
   POLICE_ALERT: {
     description: "Кто-то вызвал полицию! У вас 10 секунд чтобы сбежать!",
-    duration: 10,
+    duration: 5,
     chance:  0.1,
     icon: EVENTS_ICON.PHLASHER,
     apply: function () {

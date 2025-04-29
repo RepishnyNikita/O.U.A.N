@@ -4,10 +4,9 @@ import takeItem from "../takeItem.js";
 import updateUI from "../updatesUI.js";
 import { addToLog, clearActions, addAction } from "../utils.js";
 import { game } from "../variables-game.js";
-import { containerElements } from "../dom-elements.js";
 import { ICON } from "../assets.js";
 import { attemptExit } from "./attemptEscape.js";
-
+import { setContainerClass } from "../setContainerClass.js";
 
 // Вход в комнату
 export default function enterRoom(roomName) {
@@ -15,8 +14,8 @@ export default function enterRoom(roomName) {
     addToLog("Ошибка: комната не найдена", "red");
     return;
   }
+  setContainerClass('actions-container--grid-auto-fit')
   
-  // containerElements.actionsContainer.classList.remove('actions-container-grid-3-cols')
 
   // НЕ ТРАТИМ ЭНЕРГИЮ НА ПРОВЕРКУ КОМНАТ ПРИ ВЕЧЕРИНКЕ
   const energyCost = game.events.partyHouse ? 0 : 1;
@@ -57,14 +56,14 @@ export default function enterRoom(roomName) {
         addToLog(`Ошибка: предмет ${item} не найден в базе`, "red");
         return;
       }
-      addAction(null, () => takeItem(item),'items', items[item].icon);
+      addAction(null, () => takeItem(item),'button-actions button-actions--icon-item', items[item].icon);
     });
   }
   
   addAction(
     null,()=>
     attemptExit(roomName),
-    "actions-container-cancellation",
+    "button-actions button-actions--control-back",
     ICON.BACK
   );
 }

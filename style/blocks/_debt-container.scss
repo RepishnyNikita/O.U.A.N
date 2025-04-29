@@ -20,7 +20,6 @@
 
         .debt-container{
             &__btn-chevron{
-                
                 transform: rotate(0deg);
             }
         }
@@ -34,13 +33,13 @@
         }
         100%{
             padding-block: rem(0);
-            height:fluid(33,25);
+            height:fluid(33,24);
         }
     }
     @keyframes heightup {
         0%{
             padding-block: rem(0);
-            height:fluid(33,25);
+            height:fluid(33,24);
         }
         100%{
             padding-block: rem(10);
@@ -121,8 +120,7 @@
         border: 0;
         background-color: transparent;
         top: 0;
-        right: rem(10);
-        z-index: 111;
+        right: fluid(10,5);
         transform: rotate(180deg);
         transition: 0.5s ease-in-out;
     }

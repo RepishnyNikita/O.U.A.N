@@ -54,13 +54,14 @@ function restartGame(){
 
 const STATS_CONFIG = [
   {title:'Заработано с грабежей: ', getValue: () => game.economy.totalMoney},
-  {title:'Общий долг перед полицией: ',getValue: () => game.police.totalDebt},
+  {title:'Потрачено на предметы: ', getValue: () => game.economy.spentOnPurchase},
   {title:'Украденных предметов всего: ',getValue: () => game.globalItemTake},
   {title:'Украденных целевых предметов: ',getValue: () => game.globalTargetItemTake},
   {title:'Использованно энергетиков: ',getValue: () => game.totalUseEnergy},
   {title:'Открыто сейфов: ',getValue: () => game.safesOpened},
   {title:'Проникновенний в дом: ',getValue: () => game.penetrationInHouse},
   {title:'Успешные грабежи: ',getValue: () => game.successfulHeists},
+  {title:'Общий долг перед полицией: ',getValue: () => game.police.totalDebt},
   {title:'Пойман полицией: ',getValue: () => game.police.numberOfArrests},
 ]
 

@@ -8,6 +8,7 @@ import handleSafe from "./house/handleSafe.js";
 import { ICON } from "./assets.js";
 import { attemptExit } from "./house/attemptEscape.js";
 import { updateShowTargetItem, updateEnergyUI} from "./updatesUI.js";
+import { setContainerClass } from "./setContainerClass.js";
 
 
 // Взять предмет
@@ -16,7 +17,7 @@ export default function takeItem(itemName) {
     addToLog("Ошибка: предмет не найден", "red");
     return;
   }
-
+  setContainerClass('actions-container--grid-auto-fit')
   game.globalItemTake++;
   const isTargetItem = itemName === game.currentHouse.targetItem.name;
 
@@ -96,7 +97,7 @@ export default function takeItem(itemName) {
         () => {
           takeItem(item);
         },
-        "items",
+        "button-actions button-actions--icon-item",
         items[item].icon
       );
     });
@@ -106,7 +107,7 @@ export default function takeItem(itemName) {
   addAction(
     null,
     () =>attemptExit(game.currentRoom),
-    "actions-container-cancellation",
+    "button-actions button-actions--control-back",
     ICON.BACK
   );
 }
