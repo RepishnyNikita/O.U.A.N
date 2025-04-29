@@ -2,6 +2,7 @@ import { addToLog } from "./utils.js";
 import endGame from "./endGame.js";
 import { game } from "./variables-game.js";
 import { ICON } from "./assets.js";
+import {updatePoliceDebtUI} from './updatesUI.js'
 
 
 export default function handleArrest() {

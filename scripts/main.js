@@ -22,7 +22,7 @@ export default function initGame() {
   })
   
   document.querySelector('[data-js-button-burger]').addEventListener('click',()=>{
-    document.querySelector('[data-js-header-dialog]').classList.toggle('is-close')
+    document.querySelector('[data-js-header-dialog]').classList.toggle('is-open')
   })
 
   document
