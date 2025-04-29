@@ -2,7 +2,7 @@
 
 .actions-container{
     position: relative;
-    padding: rem(10) fluid(40,30);
+    padding: rem(10) fluid(40,10);
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -18,7 +18,10 @@
     background-size: cover;
     background-repeat: no-repeat;
 
-   
+    @include mobile{
+        padding: 0;
+    }
+    
     &--column{
         flex-direction: column;
     }
@@ -30,7 +33,7 @@
         gap: rem(10);
 
         @include mobile{
-            padding-right: rem(50);
+            padding-inline: rem(35);
         }
     }
     &--grid-auto-fit{
@@ -42,7 +45,7 @@
         margin: 0 auto;
 
         @include mobile{
-            padding-right: rem(50);
+            padding-inline: rem(35);
         }
     }
 

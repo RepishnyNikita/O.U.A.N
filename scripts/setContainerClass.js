@@ -10,6 +10,13 @@ export const setContainerClass = (newClass) => {
     container.classList.remove(...className);
     return;
   }
+  if(newClass === 'actions-container--grid'){
+    container.style.backgroundImage = 'url("../image/bg-3.jpg")'
+  }
+  if(newClass === 'actions-container--column'){
+    container.style.backgroundImage = 'url("../image/bg-2.jpg")'
+  }
+ 
   container.classList.remove(...className);
   container.classList.add(newClass);
 };

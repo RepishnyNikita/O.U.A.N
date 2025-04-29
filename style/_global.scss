@@ -8,9 +8,7 @@ html{
 
 body{
     @include fluid-text(18, 14);
-
     display: flex;
-    padding: fluid(40,10);
     flex-direction: column;
     align-items: center;
     letter-spacing: -0.03em;
@@ -22,7 +20,10 @@ body{
     background-position: center center;
     background-repeat: no-repeat;
     overflow-x: hidden;
-
+    
+    @include mobile-above{
+        padding: fluid(40,10);
+    }
 }
 main{
     flex-grow: 1;

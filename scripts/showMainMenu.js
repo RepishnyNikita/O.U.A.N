@@ -8,5 +8,5 @@ export default function showMainMenu() {
   clearInterval(game.gameInterval);
   clearActions();
   addToLog("Главное меню:", null);
-  addAction("Выбрать дом для ограбления", selectHouse, 'button-actions', ICON.HOUSE);
+  addAction("Начать ограбления", selectHouse, 'button-actions', ICON.HOUSE);
 }

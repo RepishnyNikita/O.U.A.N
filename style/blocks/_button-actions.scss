@@ -1,13 +1,13 @@
 @use '../helpers/' as *;
 
 .button-actions{
-    padding: rem(5) fluid(25,5);
+    padding: rem(5) fluid(25,10);
     display: flex;
     align-items: center;
     justify-content: center;
     column-gap: fluid(15,10);
 
-    font-size: fluid(22,14);
+    font-size: fluid(24,18);
 
     color: var(--color-accent);
     background-color: #222222;
@@ -15,8 +15,9 @@
     font-weight: 600;
     border:rem(1) solid #4b4b4b;
 
+
     & img{
-        width: fluid(40,20);
+        width: fluid(40,25);
     }
 
     @include hover{
@@ -36,14 +37,14 @@
     }
 
     &--wide{
-        width: rem(170);
+        width: rem(200);
         column-gap: rem(15);
     }
 
     &--wide-space{
         padding-inline: rem(10);
         justify-content: space-between;
-        width: fluid(270,190);
+        width: fluid(270,220);
         column-gap: rem(5);
     }
 
