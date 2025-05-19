@@ -1,8 +1,6 @@
-import { buttonElements } from "./dom-elements.js";
+import { buttonElements, containerElements } from "./dom-elements.js";
 import { items } from "./items.js";
-import showBlackMarket from "./market/blackMarket/showBlackMarket.js";
-import sellingLoot from "./market/sellingLoot.js";
-import updateInventory from "./updateInventory.js";
+import market from "./market/market.js";
 import { addToLog } from "./utils.js";
 import { game } from "./variables-game.js";
 
@@ -46,13 +44,6 @@ export const updateMoneyUI = () => {
   document.querySelector(
     "[data-js-money]"
   ).innerText = `$${game.economy.money.toLocaleString("en-US")}`;
-};
-
-export const updateMarketTimerUI = () => {
-  document.querySelector("[data-js-black-market-timer]").textContent =
-    game.marketTimer;
-  document.querySelector("[data-js-sell-market-timer]").textContent =
-    game.marketTimer;
 };
 
 export const updateDebtUI = () => {
@@ -107,39 +98,28 @@ export const updateEnergyRegenUI = () => {
 };
 
 // Обновление цен на рынке
-export const updateSellMarketPrices = () => {
-    for (const item in game.sellMarketModifiers) {
-      const newModifier = 0.9 + Math.random() * 0.6;
-      game.sellMarketModifiers[item].modifier = newModifier;
-      game.sellMarketModifiers[item].currentPrice = Math.round(
-        game.sellMarketModifiers[item].basePrice * newModifier
-      );
+export const updateMarketPrices = () => {
+  const salePercentages = [40,-25,-10, 0, 10, 25, 40]
+
+  function addPercentage(item){
+    const percentageIndex =  Math.floor(Math.random() * salePercentages.length) 
+    const selectedPercentage = salePercentages[percentageIndex]
+    item.currentPrice = Math.round(item.basePrice * (1 + selectedPercentage / 100));
+  }
+
+    game.market.loot.forEach(item => {
+      addPercentage(item)
+    });
+    game.market.consumable.forEach(item => {
+      addPercentage(item)
+    });
+    if(containerElements.market.classList.contains('is-open')){
+      market()
     }
-  
-    addToLog("Цены на приёмку изменились!", "green");
-  
-    // Обновляем отображение, если окно рынка открыто
-    if (document.querySelector("[data-js-sell-market]").style.display === "grid") {
-      sellingLoot();
-    }
+
+    addToLog("Цены на рынке изменились!", "green");
 }
 
-// Обновление цен на черном рынке
-export const updateMarketPrices = () => {
-    for (const item in game.marketModifiers) {
-      const newModifier = 0.7 + Math.random() * 0.6;
-      game.marketModifiers[item].modifier = newModifier;
-      game.marketModifiers[item].currentPrice = Math.round(
-        game.marketModifiers[item].basePrice * newModifier
-      );
-    }
-  
-    addToLog("Цены на черном рынке изменились!", "green");
-  
-    if (document.querySelector("[data-js-black-market]").style.display === "grid") {
-      showBlackMarket();
-    }
-}
 
 // Обновление интерфейса
 export default function updateUI() {
@@ -148,6 +128,5 @@ export default function updateUI() {
   updateMoneyUI();
   updateDebtUI();
   updatePoliceDebtUI();
-  updateInventory();
   updateTimerUI();//?Перенести
 }

@@ -1,0 +1,171 @@
+@use '../helpers/' as *;
+
+.market{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 0;
+    margin: 0;
+    min-width: rem(300);
+    max-width: rem(420);
+    width: calc(100% - rem(21));
+    min-height: rem(500);
+    background-color: #4A4848;
+    border: rem(1) solid var(--color-light);
+    color:var(--color-light);
+
+    &::backdrop{
+        background-image: url('../image/market-bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center,center;
+    }
+
+    &.is-open{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__header{
+        padding: rem(5);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: rem(40);
+    }
+
+    &__title{
+        display: flex;
+        align-items: center;
+        column-gap: rem(4);
+        color: #7A7974;
+    }
+
+    &__money{
+        display: flex;
+        align-items: center;
+        column-gap: rem(4);
+        color: var(--color-green);
+    }
+
+    &__inner{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        row-gap: rem(5);
+        &-tag{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            color:var(--color-light);
+            font-size: rem(14);
+            border-top: rem(1) solid var(--color-light);
+            border-bottom: rem(1) solid var(--color-light);
+            text-align: center;
+
+            & span:not(:last-child){
+                border-right: rem(1) solid var(--color-light);
+            }
+        }
+    }
+
+    &__list{
+        padding-block: rem(5);
+        display: grid;
+        row-gap: rem(5);
+        overflow-y: auto;
+        max-height: rem(370);
+
+        &.empty{
+            font-size: rem(30);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            color: var(--color-gray);
+        }
+    }
+
+    &__item{
+        padding-inline: rem(5);
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        justify-items: center;
+        align-items: center;
+
+        &-bg{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include square(rem(40));
+            padding: rem(3);
+            border: rem(1) solid var(--color-light);
+            border-radius: rem(3);
+            background-color: var(--color-light-opacity);
+        }
+        &-price{
+            &--up{
+                color: var(--color-green);
+            }
+            &--down{
+                color: var(--color-red);
+            }
+        }
+
+        &-btn{
+            height: rem(30);
+            width: 100%;
+            background-color: transparent;
+            border: rem(1) solid var(--color-light);
+            color: inherit;
+
+            &:disabled{
+                pointer-events: none;
+                opacity: 0.4;
+            }
+
+            @include hover{
+                color: #7A7974;
+            }
+        }
+    }
+
+    &__inventory{
+        display: grid;
+        grid-template-columns: repeat(6,1fr);
+        gap: rem(5);
+        align-items: center;
+        justify-items: center;
+        justify-content: center;
+        padding: rem(5) rem(10);
+        border-top: rem(1) solid var(--color-light);
+        min-height: rem(40);
+        height: max-content;
+        color: #7A7974;
+    }
+
+    &__control{
+        display: grid;
+        margin-top: auto;
+        width: 100%;
+    }
+
+    &__btn{
+        padding: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: rem(5);
+        color: var(--color-light);
+        background-color: transparent;
+        height: rem(40);
+        border: 0;
+        border-top: rem(1) solid var(--color-light);
+
+        img{
+            width: fluid(35,25);
+        }
+    }
+
+}

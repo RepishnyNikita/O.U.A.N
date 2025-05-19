@@ -1,18 +1,17 @@
-import updateInventory from "../updateInventory.js";
 import updateUI from "../updatesUI.js";
 import { addToLog } from "../utils.js";
 import { game } from "../variables-game.js";
 import showEntryPoints from "./showEntryPoints.js";
 import { entryTypes } from "./entryTypes.js";
 import enterHouse from "./enterHouse.js";
+import { showMenuControls } from "../showMenuControls.js";
+
 
 // Попытка проникновения
 export default function attemptEntry(entry) {
-  console.log('МЕня вызвала что то');
   const entryType = entryTypes[entry.type];
-
   if (entry.locked) {
-    const hasTool = game.inventory.some((item) =>
+    const hasTool = game.inventory.belt.some((item) =>
       entryType.tools.includes(item)
     );
 
@@ -44,16 +43,16 @@ export default function attemptEntry(entry) {
 
   if (entry.locked) {
     const usedTool = entryType.tools.find((tool) =>
-      game.inventory.includes(tool)
+      game.inventory.belt.includes(tool)
     );
     if (usedTool) {
-      const toolIndex = game.inventory.indexOf(usedTool);
-      game.inventory.splice(toolIndex, 1);
+      const toolIndex = game.inventory.belt.indexOf(usedTool);
+      game.inventory.belt.splice(toolIndex, 1);
       addToLog(
         `Использован ${usedTool} для входа через ${entryType.description}`,
         "gray"
       );
-      updateInventory();
+      showMenuControls()
     }
 
     addToLog(

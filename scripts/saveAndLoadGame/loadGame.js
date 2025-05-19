@@ -2,9 +2,7 @@ import updateUI from "../updatesUI.js";
 import { game } from "../variables-game.js";
 import { addToLog } from "../utils.js";
 import showMainMenu from "../showMainMenu.js";
-import initMarketModifiers from "../market/blackMarket/initMarketModifiers.js";
 import initModifiers from "../market/initModifiers.js";
-import startMarketTimer from "../market/blackMarket/startMarketTimer.js";
 import { ICON } from "../assets.js";
 
 
@@ -44,7 +42,7 @@ export default function loadGame() {
 
       // Инициализируем модификаторы, если их нет в сохранении
       if (!game.marketModifiers["отмычка"]) {
-        initMarketModifiers();
+  
         initModifiers();
       } else {
         startMarketTimer();

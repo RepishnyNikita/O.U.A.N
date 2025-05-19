@@ -23,23 +23,16 @@
                 <div class="battery__tip"></div> 
             </div>
             
-            <button class="game-header__btn" data-js-button-burger>
-                <img src="icon/burgerButton.svg" alt="">
-            </button>
-
             <div class="money">
                 <img src="icon/total-money.png" alt="money icon">
                 <span data-js-money></span>
             </div>
         </div>
 
-        <div class="game-header-dialog" data-js-header-dialog>
-            <button class="game-saved-button" data-js-saved-button>Сохранить игру</button>
-            <button class="game-saved-button" data-js-load-button>Загрузить игру</button>
-            <button class="game-saved-button" data-js-statistics-modal-open>Статистика</button>
-        </div>
         <!----------------------->
-        <div class="debt-container" data-js-debt-container>
+        <dialog class="debt-container" data-js-debt-container>
+            
+            <p class="debt-container__desc">Здесь отображаються все ваши задолжности</p>
             <div class="debt-container__content">
                 <p class="debt-container__content-desc">
                     Задолжность Фродо Беккенсу
@@ -70,10 +63,8 @@
                 </div>
             </div>
 
-            <button class="debt-container__btn-chevron" data-js-debt-container-btn-chevron>
-                <img src="icon/uiIcon/down-chevron.png" alt="">
-            </button>
-        </div>
+            <button class="debt-container__btn-close" data-js-debt-container-close>Закрыть окно</button>
+        </dialog>
 
         <!-- ----------------- -->
         <div class="log">
@@ -91,8 +82,7 @@
             </div>
         </div>
         <!-- ----------------- -->
-        <div class="actions-container" data-js-actions-container>
-        </div>
+        <div class="actions-container" data-js-actions-container></div>
         <!-- ----------------- -->
         <div class="inventory" data-js-inventory></div>
         <!-- ----------------- -->
@@ -100,62 +90,43 @@
         <!--статистика-->
         <dialog class="statistics-modal" data-js-statistics-modal>
             <div class="statistics-modal-content" data-js-statistics-modal-content></div>
-            <button class="statistics-modal-btn-restart" data-js-restart-game>Начать заного</button>
-            <button class="statistics-modal-btn-close" data-js-statistics-modal-close>Закрыть окно</button>
+            <button class="statistics-modal__btn-close" data-js-statistics-modal-close>Закрыть окно</button>
         </dialog>
-        <div class="shops-container__buttons" data-js-shops-buttons>
-            <!-- <button class="shops-container__button" data-js-black-market-btn>
-                Купить
-                <img src="icon/pay.png" alt="" width="25" height="25" loading="lazy">
-            </button>
-            <button class="shops-container__button" data-js-sell-market-btn>
-                Продать
-                <img src="icon/sell.png" alt="" width="25" height="25" loading="lazy">
-            </button> -->
-        </div>
-        <footer class="game-footer">
-            <button class="game-footer__controls" data-js-black-market-btn>Купить</button>
-            <button class="game-footer__controls">Инвентарь</button>
-            <button class="game-footer__controls" data-js-sell-market-btn>Продать</button>
-            <button class="game-footer__controls">Быстрый слот</button>
-        </footer>
 
-        <!-- покупка -->
-        <div class="black-market" data-js-black-market>
-            <button class="black-market-close-btn" data-js-black-market-close-btn>Х</button>
-            <h3 class="h4">Черный рынок</h3>
-            <div>
-                <span>Наличные:$</span>
-                <span data-js-black-market-money></span>
+        <footer class="game-footer" data-js-game-footer></footer>
+
+        <div class="game-header-dialog" data-js-header-dialog>
+            <button class="game-saved-button" data-js-saved-button>Сохранить игру</button>
+            <button class="game-saved-button" data-js-load-button>Загрузить игру</button>
+            <button class="game-saved-button" data-js-statistics-modal-open>Статистика</button>
+            <button class="game-saved-button" >Настройки</button>
+        </div>
+
+        <dialog class="market" data-js-market>
+            <div class="market__header">
+                <div class="market__title" data-js-market-title></div>
+                <div class="market__money">
+                    <span data-js-market-money>$1111</span>
+                    <img src="icon/total-money.png" alt="" width="20" height="20">
+                </div>
             </div>
-            <div class="black-market-inner">
-                <div class="black-market-header">
+        
+            <div class="market__inner">
+                <div class="market__inner-tag">
                     <span>Товар</span>
+                    <span>Название</span>
                     <span>Цена</span>
                     <span>Действие</span>
                 </div>
-                <ul class="black-market-list" data-js-black-market-list></ul>
+                <ul class="market__list" data-js-market-list></ul>
             </div>
-            <div class="black-market-timer">Изменение цен через:<span data-js-black-market-timer></span></div>
-        </div>
-        <!-- продажа -->
-        <div class="black-market" data-js-sell-market>
-            <button class="black-market-close-btn" data-js-sell-market-close-btn>Х</button>
-            <h3 class="h4">Сбыт краденного</h3>
-            <div>
-                <span>Наличные:$</span>
-                <span data-js-sell-market-money></span>
-            </div>
-            <div class="black-market-inner">
-                <div class="black-market-header">
-                    <span>Товар</span>
-                    <span>Цена</span>
-                    <span>Действие</span>
-                </div>
-                <ul class="black-market-list" data-js-sell-market-list></ul>
-            </div>
-            <div class="black-market-timer">Изменение цен через:<span data-js-sell-market-timer></span></div>
-        </div>
+            <div class="market__control" data-js-market-controls></div>
+        
+            <div class="market__inventory" data-js-market-inventory><div>
+        </dialog>
+
+        <div class="inventory-modal" data-js-inventory-modal></div>
+
     </main>
 </body>
 </html>

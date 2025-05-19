@@ -81,7 +81,7 @@
         }
 
         img{
-            @include square(fluid(90,70));
+            @include square(fluid(90,50));
         }
 
         &.disable{

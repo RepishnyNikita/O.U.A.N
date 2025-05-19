@@ -1,50 +1,32 @@
 @use '../helpers/' as *;
 
 .debt-container{
-    padding-inline:rem(10);
-    display: grid;
+    padding:rem(20) rem(10) rem(10);
     row-gap: rem(5);
-    width: 100%;
-    border-radius: rem(10);
-    background-color: #0000008f;
-    border: rem(1) solid #ffffff65;
+    width: calc(100% - rem(20));
+    max-width: rem(320);
+    background-color: #414141;
+    border:rem(2) solid var(--color-light) ;
     color: #F9F4DA;
-    position: relative;
+    z-index: 1;
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    margin: 0;
 
-    transition: 0.5s ease;
-    overflow: hidden;
-    animation: heightup 0.5s linear forwards;
-
-    &.is-close{
-        animation: heightdown 0.5s linear forwards;
-
-        .debt-container{
-            &__btn-chevron{
-                transform: rotate(0deg);
-            }
-        }
+    &::backdrop{
+        background-color: #000000e0;
     }
 
-
-    @keyframes heightdown {
-        0%{
-            padding-block: rem(10);
-            height: rem(180);
-        }
-        100%{
-            padding-block: rem(0);
-            height:fluid(33,24);
-        }
+    &.is-open{
+        display: grid;
+        row-gap: rem(14);
     }
-    @keyframes heightup {
-        0%{
-            padding-block: rem(0);
-            height:fluid(33,24);
-        }
-        100%{
-            padding-block: rem(10);
-            height:rem(180);
-        }
+
+    &__desc{
+        text-align: center;
+        padding-bottom: rem(20);
     }
     
     &__content{
@@ -113,15 +95,29 @@
         }
     }
 
-    &__btn-chevron{
-        @include square(fluid(30,25));
-        padding: 0;
+    &__button-close{
         position: absolute;
-        border: 0;
-        background-color: transparent;
+        right: 0;
         top: 0;
-        right: fluid(10,5);
-        transform: rotate(180deg);
-        transition: 0.5s ease-in-out;
+        background-color: transparent;
+        padding: 0;
+        border: 0;
+        @include square(rem(25));
+    }
+
+    &__btn-close{
+        width: 100%;
+        
+
+        font-weight: 600;
+        border:rem(2) solid var(--color-light);
+        background-color: transparent;
+        color: var(--color-light);
+
+        @include hover{
+            border-radius: rem(4);
+         border:rem(2) solid #fff;
+         color: #fff;
+        }
     }
 }

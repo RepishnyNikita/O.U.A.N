@@ -1,22 +1,31 @@
 @use '../helpers/' as *;
 
 .inventory{
-    margin-top: auto;
-    padding: fluid(15,10) fluid(20,10);
+    gap: fluid(10, 3);
     width: 100%;
-    display: flex;
+    justify-items: center;
     align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(rem(48), 1fr));;
     border-radius: rem(5);
-    border: rem(2) solid rgba(211, 151, 66,);
-    background-color: rgba(211, 151, 66, 0.7);
-    column-gap: rem(10);
-    overflow-x: auto;
-    @include tablet-above{
-        justify-content: center
+    background-color: rgb(47 47 47);
+    background-image: url('../image/inventory-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 0;
+    transition: 0.3s ease-in-out;
+    overflow: hidden;
+
+    &.is-open{
+        transition: 0.3s ease-in-out;
+        padding: fluid(10,5);
+        height:fluid(170,120); 
+        border: rem(2) solid var(--color-light);
     }
 
     &-slot{
-        @include square(fluid(60,50));
+        @include square(fluid(70,43));
         padding: rem(5);
         border:rem(2) solid #F9F4DA;
         display: flex;
@@ -34,6 +43,12 @@
             cursor: pointer;
             background: linear-gradient(180deg, #3fd83f 31.5%, #273d21 100%);
         }
+    }
+
+    &__button-close{
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 }
 

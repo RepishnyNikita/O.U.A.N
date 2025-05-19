@@ -30,7 +30,7 @@ export default function attemptEscape() {
   updateUI();
   clearActions();
 
-  const hasTarget = game.inventory.includes(game.currentHouse.targetItem.name);
+  const hasTarget = game.inventory.backpack.includes(game.currentHouse.targetItem.name);
 
   if (hasTarget) {
     game.successfulHeists++;

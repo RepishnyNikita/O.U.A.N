@@ -75,7 +75,6 @@ export default function generateHouse() {
     
   });
 
-  console.log('ГЕНЕРАЦИЯ');
   return {
     entryPoints: entryPoints,
     rooms: generatedRooms,

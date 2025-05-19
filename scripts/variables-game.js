@@ -6,7 +6,7 @@ export const game = {
         energyRegenTimer: 60,
     },
     economy:{
-        money: 0,
+        money: 1000,
         totalMoney: 0,
         debtPaid: 0,
         baseFine:1000,
@@ -30,12 +30,21 @@ export const game = {
         baseFine: 500,
         maxDebt: 10000,
     },
+    market:{
+        sell:false,
+        buy:false,
+    },
+
+    inventory:{
+        backpack: ['отмычка','отмычка','отмычка','ваза'],
+        belt:['отмычка','отмычка','отмычка','камень'],
+        backpackSlots: 4,
+        beltSlots: 4,
+        maxBackpackSlots: 12,
+    },
 
     startRobbery:false,
     timeLeft: 480,
-    inventory: [],
-    inventorySlots: 6,
-
     currentHouse: null,
     checkedDoors: [],
     currentRoom: null,
@@ -58,9 +67,9 @@ export const game = {
     totalLoot: 0,
     penetrationInHouse:0,
 
-    marketTimer: 120, 
-    marketModifiers: {}, 
-    sellMarketModifiers: {}, 
+    marketTimer: 0, 
+    market:{},
     marketInterval: null, 
+
     hiddenStore: false,
 };

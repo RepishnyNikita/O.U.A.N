@@ -4,6 +4,9 @@ import attemptEscape from "./attemptEscape.js";
 import enterRoom from "./enterRoom.js";
 import { ICON } from "../assets.js";
 import { setContainerClass } from "../setContainerClass.js";
+import { containerElements } from "../dom-elements.js";
+
+
 let visitedHouse = false;
 
 // Вход в дом
@@ -20,6 +23,7 @@ export default function enterHouse() {
   Object.keys(game.currentHouse.rooms).forEach((room) => {
     const isVisitedRoom = game.visitedRooms.includes(room)
     addAction(
+      containerElements.actionsContainer,
       `${room}`,
       () => enterRoom(room),
       isVisitedRoom
@@ -31,6 +35,7 @@ export default function enterHouse() {
 
 
   addAction(
+    containerElements.actionsContainer,
     null,
     () => {
       visitedHouse = false;

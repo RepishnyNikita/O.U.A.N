@@ -1,5 +1,4 @@
 import { items } from "./items.js";
-import updateInventory from "./updateInventory.js";
 import { addToLog, addAction, clearActions } from "./utils.js";
 import { game } from "./variables-game.js";
 import triggerEvent from "./events/triggerEvent.js";
@@ -9,6 +8,8 @@ import { ICON } from "./assets.js";
 import { attemptExit } from "./house/attemptEscape.js";
 import { updateShowTargetItem, updateEnergyUI} from "./updatesUI.js";
 import { setContainerClass } from "./setContainerClass.js";
+import { containerElements } from "./dom-elements.js";
+import {showMenuControls} from './showMenuControls.js'
 
 
 // Взять предмет
@@ -40,7 +41,7 @@ export default function takeItem(itemName) {
     return;
   }
 
-  if (game.inventory.length >= game.inventorySlots) {
+  if (game.inventory.backpack.length >= game.inventory.backpackSlots) {
     addToLog(
       "Инвентарь полон! Уйдите или освободите инвентарь!",
       "red",
@@ -51,7 +52,7 @@ export default function takeItem(itemName) {
   game.energy.currentEnergy -= energyCost;
   updateEnergyUI();
 
-  game.inventory.push(itemName);
+  game.inventory.backpack.push(itemName);
 
   //Удаляем из комнаты предмет
   const room = game.currentHouse.rooms[game.currentRoom];
@@ -82,8 +83,7 @@ export default function takeItem(itemName) {
   );
 
   clearActions();
-  updateInventory();
-
+  showMenuControls()
   const roomItems = [...game.currentHouse.rooms[game.currentRoom].items];
 
   if (roomItems.length > 0 || room.hasSafe) {
@@ -93,6 +93,7 @@ export default function takeItem(itemName) {
 
     roomItems.forEach((item) => {
       addAction(
+        containerElements.actionsContainer,
         null,
         () => {
           takeItem(item);
@@ -105,6 +106,7 @@ export default function takeItem(itemName) {
 
   //выход
   addAction(
+    containerElements.actionsContainer,
     null,
     () =>attemptExit(game.currentRoom),
     "button-actions button-actions--control-back",

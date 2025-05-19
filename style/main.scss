@@ -11,11 +11,13 @@
 @use './blocks/timer';
 @use './blocks/shops-container';
 @use './blocks/money';
+@use './blocks/button-controls';
 @use './blocks/actions-container';
 @use './blocks/button-actions';
 @use './blocks/inventory';
+@use './blocks/inventory-modal';
 @use './blocks/log';
-@use './blocks/black-market';
+@use './blocks/market';
 @use './blocks/event-notification';
 @use './blocks/target-item';
 @use './blocks/statistics-popup';

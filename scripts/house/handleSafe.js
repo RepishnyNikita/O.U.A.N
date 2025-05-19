@@ -1,10 +1,10 @@
 import takeItem from "../takeItem.js";
-import updateInventory from "../updateInventory.js";
 import { addAction, addToLog, clearActions } from "../utils.js";
 import { game } from "../variables-game.js";
 import { items } from "../items.js";
 import { ICON } from "../assets.js";
 import { attemptExit } from "./attemptEscape.js";
+import { containerElements } from "../dom-elements.js";
 
 
 // Обработка сейфа
@@ -12,12 +12,13 @@ export default function handleSafe() {
   const room = game.currentHouse.rooms[game.currentRoom];
   if (!room.hasSafe) return;
   const tools = ["отмычка", "декодер"];
-  const hasTool = tools.some((tool) => game.inventory.includes(tool));
+  const hasTool = tools.some((tool) => game.inventory.belt.includes(tool));
 
   if (!hasTool) {
     addToLog("Вы видите сейф, но вам нечем вломать!", "gray",ICON.X_MARK);
 
     addAction(
+      containerElements.actionsContainer,
       null,
       null,
       "button-actions button-actions--safe-disabled",
@@ -39,17 +40,17 @@ export default function handleSafe() {
 
   if(hasTool){
     tools.forEach(tool =>{
-      if(game.inventory.includes(tool)){
+      if(game.inventory.belt.includes(tool)){
         addAction(
+          containerElements.actionsContainer,
           null,
           () => {
             if (game.energy.currentEnergy >= energyCost) {
               game.energy.currentEnergy -= energyCost;
               game.timeLeft -= tool === "отмычка" ? timeCostLockpick : timeCostDecoder;
       
-              const pickIndex = game.inventory.indexOf(tool);
-              game.inventory.splice(pickIndex, 1);
-              updateInventory();
+              const pickIndex = game.inventory.belt.indexOf(tool);
+              game.inventory.belt.splice(pickIndex, 1);
 
               room.items.push(itemInSafe);
               room.hasSafe = false;
@@ -62,6 +63,7 @@ export default function handleSafe() {
               );
               clearActions();
               addAction(
+                containerElements.actionsContainer,
                 null,
                 () => {
                   takeItem(itemInSafe);
@@ -69,8 +71,8 @@ export default function handleSafe() {
                 "button-actions button-actions--icon-item",
                 items[itemInSafe].icon
               );
-              updateInventory();
               addAction(
+                containerElements.actionsContainer,
                 null,
                 () => attemptExit(game.currentHouse.rooms[game.currentRoom]) ,
                 "button-actions button-actions--control-back",
@@ -88,6 +90,7 @@ export default function handleSafe() {
   }
 
   addAction(
+    containerElements.actionsContainer,
     null,
     () => attemptExit(game.currentHouse.rooms[game.currentRoom]) ,
     "button-actions button-actions--control-back",

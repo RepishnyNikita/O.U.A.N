@@ -13,12 +13,13 @@ export default function handleArrest() {
       "red",
       ICON.X_MARK
     );
-    endGame("lose");
+    endGame();
     return;
   }
 
-  if (game.inventory.length > 0) {
-    game.inventory = [];
+  if (game.inventory.backpack.length && game.inventory.belt.length > 0) {
+    game.inventory.backpack = [];
+    game.inventory.belt = [];
     addToLog(
       `Полиция конфисковала все предметы из инвентаря!`,
       "red",

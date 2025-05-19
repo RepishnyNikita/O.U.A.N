@@ -18,7 +18,6 @@ export default function selectHouse() {
   clearActions();
   addToLog(`Выберите дом для ограбления:`, null);
   setContainerClass('actions-container--column')
-  containerElements.debtContainer.classList.add('is-close')
 
   for (let i = 1; i <= 3; i++) {
     const house = generateHouse();
@@ -38,6 +37,7 @@ export default function selectHouse() {
     );
 
     addAction(
+      containerElements.actionsContainer,
       `Дом ${i}`,
       () => {
         if (game.energy.currentEnergy <= 0) {
@@ -63,6 +63,7 @@ export default function selectHouse() {
   }
 
   addAction(
+    containerElements.actionsContainer,
     null,
     () => {
       addToLog(`Отмена ограбления!`, "gray", ICON.EXIT_MAN);

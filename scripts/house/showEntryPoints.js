@@ -3,13 +3,15 @@ import { game } from "../variables-game.js";
 import { entryTypes } from "./entryTypes.js";
 import updateUI from "../updatesUI.js";
 import attemptEntry from "./attemptEntry.js";
-import updateInventory from "../updateInventory.js";
 import endRobbery from "../endRobbery.js";
 import { items } from "../items.js";
 import triggerEvent from "../events/triggerEvent.js";
 import { randomEvents } from "../events/randomEvents.js";
 import { ICON } from "../assets.js";
 import { setContainerClass } from "../setContainerClass.js";
+import { containerElements } from "../dom-elements.js";
+import { showMenuControls } from "../showMenuControls.js";
+
 
 
 // Показать точки входа
@@ -29,6 +31,7 @@ export default function showEntryPoints() {
   for (const type in entryGroups) {
     const entryInfo = entryTypes[type];
     addAction(
+      containerElements.actionsContainer,
       `Проверить ${entryInfo.description}`,
       () => showSpecificEntryPoints(type),
       "button-actions button-actions--wide-space",
@@ -37,6 +40,7 @@ export default function showEntryPoints() {
   }
 
   addAction(
+    containerElements.actionsContainer,
     null,
     () => {
       if (game.energy.currentEnergy <= 0 ) {
@@ -74,11 +78,12 @@ function showSpecificEntryPoints(type) {
         if(!game.inventory.includes('камень') && point.type === 'окно'){
           game.inventory.push('камень')
           addToLog('Вы нашли под ногами камень пока осмматривались, и можно воспользоваться','green',items['камень'].icon)
-          updateInventory()
+          showMenuControls()
         }
       }
     }
     addAction(
+      containerElements.actionsContainer,
       null,
       () => inspectEntryPoint(point),
       `button-actions button-actions--icon-button ${status === "заперто" && "disable"}`,
@@ -87,6 +92,7 @@ function showSpecificEntryPoints(type) {
   });
 
   addAction(
+    containerElements.actionsContainer,
     null,
     showEntryPoints,
     "button-actions button-actions--control-back",
@@ -141,13 +147,14 @@ function handleLockedEntry(entry) {
   setContainerClass('actions-container--column')
 
   // Проверяем, есть ли у нас нужный инструмент
-  const hasTool = entryType.tools.some((tool) => game.inventory.includes(tool));
+  const hasTool = entryType.tools.some((tool) => game.inventory.belt.includes(tool));
 
   if (hasTool) {
     entryType.tools.forEach((tool) => {
-      if (game.inventory.includes(tool)) {
+      if (game.inventory.belt.includes(tool)) {
         const toolCost = entryType.toolCosts[tool];
         addAction(
+          containerElements.actionsContainer,
           `${tool !== "камень" ? "Открыть" : "Разбить"} ${
             entryType.description
           } с помощью`,
@@ -157,9 +164,9 @@ function handleLockedEntry(entry) {
               game.timeLeft -= toolCost.time;
               entry.locked = false;
 
-              const toolIndex = game.inventory.indexOf(tool);
-              game.inventory.splice(toolIndex, 1);
-              updateInventory();
+              const toolIndex = game.inventory.belt.indexOf(tool);
+              game.inventory.belt.splice(toolIndex, 1);
+              showMenuControls()
 
               addToLog(
                 `Вы ${tool !== "камень" ? "открыли" : "разбили"}  ${
@@ -188,6 +195,7 @@ function handleLockedEntry(entry) {
   } else {
     entryType.tools.forEach((tool) => {
       addAction(
+        containerElements.actionsContainer,
         `Нужен инструмент:`,
         null,
         "button-actions button-actions--disabled",
@@ -197,6 +205,7 @@ function handleLockedEntry(entry) {
   }
 
   addAction(
+    containerElements.actionsContainer,
     null,
     () => showSpecificEntryPoints(entry.type),
     "button-actions button-actions--control-back",

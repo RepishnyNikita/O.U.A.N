@@ -2,17 +2,17 @@
 
 .game{
     &-field{
-        padding: rem(5) rem(10);
+        position: relative;
+        padding: rem(5) rem(10) rem(20);
         display: flex;
         flex-direction: column;
-        row-gap: rem(6);
+        row-gap: rem(10);
         align-items: center;
         max-width: rem(700);
         width: 100%;
         border-radius: rem(5);
         
         background-color: rgba(0, 0, 0, 0.5);
-        position: relative;
 
 
         @include mobile-above{
@@ -99,28 +99,11 @@
     }
 
     &-footer{
+        margin-top: auto;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         width: 100%;
         height: fluid(120,80);
         border:rem(1) solid var(--color-light);
-
-        &__controls{
-            padding: 0;
-            margin: 0;
-            border: 0;
-            color: var(--color-light);
-            background-color: #000000;
-            border-right: rem(1) solid var(--color-light);
-            border-bottom: rem(1) solid var(--color-light);
-            font-weight: 600;
-
-            &:nth-child(-2n+4) { border-right: none; }
-            &:nth-last-child(-n + 2) { border-bottom: none; }
-
-            @include hover{
-                background-color: rgb(66, 66, 66);
-            }
-        }
     }
 }

@@ -7,6 +7,7 @@ import { game } from "../variables-game.js";
 import { ICON } from "../assets.js";
 import { attemptExit } from "./attemptEscape.js";
 import { setContainerClass } from "../setContainerClass.js";
+import { containerElements } from "../dom-elements.js";
 
 // Вход в комнату
 export default function enterRoom(roomName) {
@@ -56,11 +57,12 @@ export default function enterRoom(roomName) {
         addToLog(`Ошибка: предмет ${item} не найден в базе`, "red");
         return;
       }
-      addAction(null, () => takeItem(item),'button-actions button-actions--icon-item', items[item].icon);
+      addAction(containerElements.actionsContainer,null, () => takeItem(item),'button-actions button-actions--icon-item', items[item].icon);
     });
   }
   
   addAction(
+    containerElements.actionsContainer,
     null,()=>
     attemptExit(roomName),
     "button-actions button-actions--control-back",

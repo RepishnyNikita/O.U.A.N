@@ -5,9 +5,6 @@ import { EVENTS_ICON, ICON } from "./assets.js";
 import { buttonElements } from "./dom-elements.js";
 import { updateDebtUI ,updatePoliceDebtUI, updateMoneyUI } from "./updatesUI.js";
 
-
-
-
 function payDebt() {
   if (game.economy.money >= game.economy.baseFine) {
     game.economy.money -= game.economy.baseFine;

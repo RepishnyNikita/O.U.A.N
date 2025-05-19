@@ -1,5 +1,4 @@
-import { containerElements, buttonElements } from "./dom-elements.js";
-import { game } from "./variables-game.js";
+import { containerElements} from "./dom-elements.js";
 
 export const clearLog = () => {
     containerElements.logContainer.innerHTML = "";
@@ -9,11 +8,15 @@ export const clearActions = () => {
     containerElements.actionsContainer.innerHTML = "";
 };
 
-export const addAction = (text, callback, className = "", img) => {
+export const addAction = (container, text, callback, className = "", img) => {
+  if (!container || !(container instanceof HTMLElement)) {
+    console.error("Контейнер не найден или не является DOM-элементом!");
+    return;
+  }
   const button = document.createElement("button");
   button.innerText = text;
   if (callback) {
-    button.onclick = callback;
+    button.addEventListener('click',callback);
   }
   if (className) {
     button.className = className;
@@ -23,10 +26,11 @@ export const addAction = (text, callback, className = "", img) => {
     image.src = img;
     button.appendChild(image);
   }
-  containerElements.actionsContainer.appendChild(button);
+  container.appendChild(button)
 
   return button;
 };
+
 
 export const addToLog = (text, type ,icon) => {
   let className = "";
@@ -48,9 +52,4 @@ export const addToLog = (text, type ,icon) => {
   containerElements.logContainer.scrollTop = containerElements.logContainer.scrollHeight;
 };
 
-export const showAndHideShop = () => {
-  Object.assign(buttonElements.shopsButtons.style, {
-    pointerEvents: !game.hiddenStore ? "all" : "none",
-    opacity: !game.hiddenStore ? "1" : "0.7",
-  });
-};
+
